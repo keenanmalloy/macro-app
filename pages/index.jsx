@@ -1,12 +1,12 @@
-import { Footer } from '../app/components/Footer';
-// import { Food } from "../Food";
+import { Footer } from "../app/components/Footer";
 import { MdOutlineAccountCircle } from "react-icons/md";
-import { IoIosNotificationsOutline, IoIosJournal } from "react-icons/io";
-import { CgDetailsMore } from "react-icons/cg";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { HomeHeader } from "../app/components/HomeHeader";
 import { useState } from "react";
-// import { SearchModal } from "../SearchModal";
 
-export default function Home() {
+export default function HomePage() {
+  const [selected, setSelected] = useState({});
+
   return (
     <div>
       <header className="flex items-center justify-between pt-2 px-5">
@@ -18,6 +18,7 @@ export default function Home() {
           <IoIosNotificationsOutline size={30} />
         </button>
       </header>
+      <HomeHeader selected={selected} setSelected={setSelected}/>
       <main className="h-screen">
         <section className="h-1/2 flex items-center justify-center">
           Macros
