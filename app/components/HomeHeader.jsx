@@ -13,14 +13,16 @@ export const HomeHeader = ({ selected, setSelected }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [items, setItems] = useState(generateCalendarState(selectedDate));
 
+
   return (
-    <nav >
+    <nav className="text-red-500">
       <ScrollDatePicker
         // @ts-ignore
         items={items}
         setItems={setItems}
         selected={selected}
         setSelected={setSelected}
+        // data={data}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />

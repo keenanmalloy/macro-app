@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
   ScrollMenu,
   VisibilityContext,
   getItemsPos,
-} from 'react-horizontal-scrolling-menu';
-import useDrag from './useDrag';
-import { generateCalendarState } from './generateCalendarState';
-import { CalendarComponent } from './Calender';
-
+} from "react-horizontal-scrolling-menu";
+import useDrag from "./useDrag";
+import { generateCalendarState } from "./generateCalendarState";
+import { CalendarComponent } from "./Calender";
 
 export const ScrollDatePicker = ({
   setSelectedDate,
@@ -43,8 +42,8 @@ export const ScrollDatePicker = ({
 
     apiRef?.current?.scrollToItem(
       apiRef?.current?.getItemElementById(currentId),
-      'smooth',
-      'center'
+      "smooth",
+      "center"
     );
 
     setSelected(
@@ -79,7 +78,7 @@ export const ScrollDatePicker = ({
         return false;
       }
       setSelected(items.filter((item) => item.id === itemId)[0]);
-      scrollToItem(getItemById(itemId), 'smooth', 'center', 'nearest');
+      scrollToItem(getItemById(itemId), "smooth", "center", "nearest");
     };
 
   return (
@@ -90,18 +89,18 @@ export const ScrollDatePicker = ({
           scrollToItem={(itemId) => {
             return apiRef.current.scrollToItem(
               apiRef.current.getItemElementById(itemId),
-              'smooth',
-              'center'
+              "smooth",
+              "center"
             );
           }}
           items={items}
           setSelectedDate={setSelectedDate}
           setSelected={setSelected}
-          displayDate={new Intl.DateTimeFormat('en-CA', {
-            month: 'short',
-            day: 'numeric',
-            weekday: 'short',
-            year: 'numeric',
+          displayDate={new Intl.DateTimeFormat("en-CA", {
+            month: "short",
+            day: "numeric",
+            weekday: "short",
+            year: "numeric",
           }).format(
             selected.id
               ? new Date(selected.year, selected.month - 1, selected.day)
@@ -121,12 +120,12 @@ export const ScrollDatePicker = ({
               item.year === new Date().getFullYear() &&
               item.day === new Date().getDate()
           ).length
-            ? 'Today'
-            : 'Reset'}
+            ? "Today"
+            : "Reset"}
         </button>
       </div>
 
-      <ul  onMouseLeave={dragStop}>
+      <ul className="p-2" onMouseLeave={dragStop}>
         <ScrollMenu
           apiRef={apiRef}
           onMouseDown={() => dragStart}
@@ -134,11 +133,11 @@ export const ScrollDatePicker = ({
             () => {
               dragStop();
               const { center } = getItemsPos(visibleItems);
-              scrollToItem(getItemById(center), 'smooth', 'center');
+              scrollToItem(getItemById(center), "smooth", "center");
             }}
           options={{ throttle: 0 }}
           onMouseMove={handleDrag}
-          scrollContainerClassName={'no-scrollbar'}
+          scrollContainerClassName={"no-scrollbar"}
         >
           {items.map((state, key) => {
             return (
@@ -157,14 +156,7 @@ export const ScrollDatePicker = ({
   );
 };
 
-
-const ButtonDate = ({
-  onClick,
-  selected,
-  state,
-  itemId,
-  highlight,
-}) => {
+const ButtonDate = ({ onClick, selected, state, itemId }) => {
   const visibility = React.useContext(VisibilityContext);
   const visible = visibility.isItemVisible(itemId);
 
@@ -172,7 +164,7 @@ const ButtonDate = ({
     <li className="flex justify-center items-center flex-col">
       <button
         className={`${
-          selected ? 'text-white' : visible ? 'text-gray-400' : 'text-gray-600'
+          selected ? "text-white" : visible ? "text-gray-400" : "text-gray-600"
         } py-2 px-3 hover:bg-slate-800 rounded-sm`}
         onClick={() => onClick(visibility)}
       >
@@ -181,8 +173,3 @@ const ButtonDate = ({
     </li>
   );
 };
-
-
-
-
-

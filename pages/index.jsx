@@ -18,7 +18,9 @@ export default function HomePage() {
           <IoIosNotificationsOutline size={30} />
         </button>
       </header>
-      <HomeHeader selected={selected} setSelected={setSelected}/>
+      <div>
+        <HomeHeader selected={selected} setSelected={setSelected} />
+      </div>
       <main className="h-screen">
         <section className="h-1/2 flex items-center justify-center">
           Macros
