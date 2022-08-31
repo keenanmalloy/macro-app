@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 export default function handler(req, res) {
   console.log({ req });
   const params = {
-    api_key: "jgXuRhVsBVV8hvuxetUJki814pFqo2NJwQKMsbpq",
+    api_key: process.env.REACT_APP_API_KEY,
     query: req.query.search,
     dataType: "Branded",
     pagesize: 15,

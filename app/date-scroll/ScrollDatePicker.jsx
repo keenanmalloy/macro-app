@@ -107,13 +107,7 @@ export const ScrollDatePicker = ({
               : new Date()
           )}
         />
-        <button
-          className="bg-white px-3 py-1 rounded-md text-xs 
-          hover:ring-2 hover:ring-slate-600
-          focus:ring-2 focus:ring-slate-600
-          "
-          onClick={reset}
-        >
+        <button onClick={reset}>
           {items.filter(
             (item) =>
               item.month === new Date().getMonth() + 1 &&
@@ -164,8 +158,8 @@ const ButtonDate = ({ onClick, selected, state, itemId }) => {
     <li className="flex justify-center items-center flex-col">
       <button
         className={`${
-          selected ? "text-white" : visible ? "text-gray-400" : "text-gray-600"
-        } py-2 px-3 hover:bg-slate-800 rounded-sm`}
+          selected ? "text-black font-bold" : visible ? "text-black" : "text-black"
+        }  px-3 `}
         onClick={() => onClick(visibility)}
       >
         {state.day}

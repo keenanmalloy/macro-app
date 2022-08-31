@@ -41,11 +41,6 @@ export const CalendarComponent = ({
   return (
     <>
       <button
-        className="text-white flex items-center rounded-sm px-2 py-1
-        hover:text-slate-200 hover:ring-1 hover:ring-slate-700
-        focus:text-slate-200 focus:ring-1 focus:ring-slate-700
-        active:text-slate-200 
-        transition"
         onClick={() => setIsOpen(true)}
       >
         <div>{displayDate}</div>
@@ -84,7 +79,6 @@ export const CalendarComponent = ({
         />
 
         <button
-          className="bg-slate-900 py-4 mt-2 w-full z-50 rounded-md focus:ring-2 focus:ring-green-400  text-white"
           onClick={handleScheduling}
         >
           Select

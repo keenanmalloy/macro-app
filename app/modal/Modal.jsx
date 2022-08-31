@@ -1,5 +1,5 @@
-import { Fragment, useState } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 
 const Modal = ({
   isOpen,
@@ -13,7 +13,7 @@ const Modal = ({
     <Transition show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-50 overflow-y-auto"
+        className="fixed bottom-24 z-50 overflow-y-auto"
         onClose={closeModal}
       >
         <div className={`min-h-screen text-center h-100`}>
@@ -43,23 +43,17 @@ const Modal = ({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div
-              className={`inline-block border-solid w-full 
-            max-w-3xl py-5 px-2 text-left align-middle 
-            transition-all transform bg-slate-800 rounded-t-2xl text-white
-             ${className}
-            `}
-            >
+            <div>
               <Dialog.Title
                 as="h3"
-                className="text-lg font-medium leading-6 text-white px-4"
+                className="text-lg font-medium leading-6 text-black px-4"
               >
                 {title}
               </Dialog.Title>
               {description && (
                 <Dialog.Description
                   as="p"
-                  className="mt-2 text-sm leading-5 text-gray-300 px-4"
+                  className="mt-2 text-sm leading-5 text-black px-4 pb-3 flex"
                 >
                   {description}
                 </Dialog.Description>

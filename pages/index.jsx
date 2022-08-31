@@ -3,6 +3,7 @@ import { MdOutlineAccountCircle } from "react-icons/md";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { HomeHeader } from "../app/components/HomeHeader";
 import { useState } from "react";
+import { SearchBar } from "../app/components/SearchBar";
 
 export default function HomePage() {
   const [selected, setSelected] = useState({});
@@ -21,12 +22,13 @@ export default function HomePage() {
       <div>
         <HomeHeader selected={selected} setSelected={setSelected} />
       </div>
-      <main className="h-screen">
-        <section className="h-1/2 flex items-center justify-center">
-          Macros
-        </section>
-        <section className="h-1/2 flex  justify-center">Progress</section>
+      <main>
+        <section className="flex items-center justify-center">Macros</section>
+        <section className="flex items-center justify-center">Progress</section>
       </main>
+      <div className="fixed bottom-16 w-full px-3 pb-2">
+        <SearchBar />
+      </div>
       <Footer />
     </div>
   );

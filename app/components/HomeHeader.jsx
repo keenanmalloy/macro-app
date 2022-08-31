@@ -15,7 +15,7 @@ export const HomeHeader = ({ selected, setSelected }) => {
 
 
   return (
-    <nav className="text-red-500">
+    <nav >
       <ScrollDatePicker
         // @ts-ignore
         items={items}
