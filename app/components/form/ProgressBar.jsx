@@ -1,5 +1,5 @@
 import React from "react";
-import { steps } from "./Form";
+import { steps } from "./SetupForm";
 
 export const ProgressBar = ({ step, setStep }) => {
   return (
@@ -16,6 +16,14 @@ export const ProgressBar = ({ step, setStep }) => {
         <Bar isFull={step >= 4} />
 
         <Bar isFull={step >= 5} />
+
+        <Bar isFull={step >= 6} />
+
+        <Bar isFull={step >= 7} />
+
+        <Bar isFull={step >= 8} />
+
+        <Bar isFull={step >= 9} />
       </div>
     </div>
   );

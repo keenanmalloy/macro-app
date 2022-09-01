@@ -1,10 +1,10 @@
 import React from "react";
-import { Form } from "../app/components/form/Form";
+import { SetupForm } from "../app/components/form/SetupForm";
 
 export default function FormPage() {
   return (
     <div>
-      <Form />
+      <SetupForm />
     </div>
   );
 }
