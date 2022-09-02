@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@headlessui/react": "^1.6.6",
+    "@mui/material": "^5.10.3",
     "apiclient": "^0.2.5",
     "axios": "^0.27.2",
     "next": "12.2.4",

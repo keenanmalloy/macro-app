@@ -8,7 +8,7 @@ export const NotAccurateForm = ({ step, setStep }) => {
         <h2 className="font-bold text-3xl p-2">
           What is your current expenditure ?
         </h2>
-        <p className="p-2">
+        <p className="p-2 leading-snug">
           This estimate will help determine a starting point for your caloric
           expenditure.
         </p>

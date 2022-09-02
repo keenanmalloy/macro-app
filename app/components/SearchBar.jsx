@@ -3,7 +3,7 @@ import { BiBarcodeReader } from "react-icons/bi";
 
 export const SearchBar = () => {
   return (
-    <div>
+    <div className="fixed bottom-16 w-full px-3 pb-2">
       <form>
         <label
           htmlFor="default-search"

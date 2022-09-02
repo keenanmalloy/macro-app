@@ -18,7 +18,7 @@ export const EstimatedExpenditure = ({ step, setStep }) => {
           <h3 className="font-bold text-3xl p-2 pt-20 fixed top-60">
             Does this look accurate?
           </h3>
-          <p className="p-2 fixed top-64 pt-24 leading-tight">
+          <p className="p-2 fixed top-64 pt-28 leading-snug">
             Expenditure is the number of calories you need to maintain your
             current bodyweight.
           </p>

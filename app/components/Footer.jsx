@@ -6,7 +6,7 @@ import {IoNutritionOutline, IoJournalOutline} from "react-icons/io5";
 export const Footer = () => {
   return (
     <footer className="fixed bottom-5 w-full text-sm">
-      <div className="flex justify-evenly pt-3 space-x-10">
+      <div className="flex justify-evenly pt-3 space-x-5">
         <button className="flex flex-col items-center">
           <MdOutlineDashboard size={20}/>
           Dashboard
