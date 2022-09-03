@@ -56,8 +56,8 @@ export const NutritionTargets = () => {
 
 const VerticalBar = () => {
   return (
-    <div className="w-4 bg-gray-200 h-8 dark:bg-gray-700">
-      <div className="bg-white mx-auto mt-1 h-0.5 w-2"></div>
+    <div className="w-4 h-8 bg-slate-200">
+      <div className="bg-slate-400 mx-auto mt-1 h-0.5 w-2"></div>
       <div
         className="bg-green-400 mx-auto w-1 flex items-center justify-center"
         style={{ height: "0%" }}

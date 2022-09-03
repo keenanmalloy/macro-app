@@ -4,7 +4,7 @@ import { GrFormNext } from "react-icons/gr";
 export const InsightsAndAnalytics = () => {
   return (
     <div className="bg-slate-100">
-      <h3 className="px-5 text-xl pt-3">Insights & Analytics</h3>
+      <h3 className="px-5 text-xl">Insights & Analytics</h3>
       <div className="flex justify-evenly pt-5 px-3 space-x-3">
         <button className="bg-white rounded-xl w-full p-3">
           <h3 className="text-left">Expenditure</h3>
@@ -21,7 +21,7 @@ export const InsightsAndAnalytics = () => {
           </p>
         </button>
       </div>
-      <div className="flex justify-center py-3">
+      <div className="flex justify-center py-3 pb-8">
         <button className="bg-white rounded-xl w-[90%] p-3">
           <h3 className="text-left">Goal Progress</h3>
           <h4 className="text-left text-sm">Aug 27 - Now</h4>
