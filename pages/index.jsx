@@ -1,4 +1,5 @@
 import { DashboardHeader } from "../app/components/dashboard/DashboardHeader";
+import { InsightsAndAnalytics } from "../app/components/dashboard/InsightsAndAnalytics";
 import { NutritionTargets } from "../app/components/dashboard/NutritionTargets";
 import { SliderDot } from "../app/components/dashboard/SliderDot";
 import { Footer } from "../app/components/Footer";
@@ -11,6 +12,7 @@ export default function HomePage() {
       <DashboardHeader/>
       <NutritionTargets/>
       <SliderDot/>
+      <InsightsAndAnalytics/>
       <SearchBar />
       <Footer />
     </div>
