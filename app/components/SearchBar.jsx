@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BiBarcodeReader } from "react-icons/bi";
 
-export const SearchBar = () => {
+export const SearchBar = ({ isModalVisible, setIsModalVisible }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   const listenToScroll = () => {
@@ -21,10 +21,11 @@ export const SearchBar = () => {
     window.addEventListener("scroll", listenToScroll);
     return () => window.removeEventListener("scroll", listenToScroll);
   }, []);
+
   return (
     <>
       {isVisible && (
-        <div className="fixed bottom-12 w-full p-3 bg-white">
+        <div className="fixed bottom-12 w-full p-3 pb-7 bg-white shadow-lg shadow-black">
           <form>
             <label
               htmlFor="default-search"
@@ -52,18 +53,23 @@ export const SearchBar = () => {
                 <button
                   type="button"
                   className="relative left-80 text-gray-500 dark:text-gray-400"
-                  onClick={() => console.log("clicked")}
                 >
                   <BiBarcodeReader size={20} />
                 </button>
               </div>
-              <input
-                type="search"
-                id="default-search"
-                className="block p-4 pl-10 w-full text-sm rounded-3xl bg-gray-300"
-                placeholder="Search for a food"
-                required=""
-              />
+              <button
+                className="w-full"
+                type="button"
+                onClick={() => setIsModalVisible(true)}
+              >
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block p-4 pl-10 w-full text-sm rounded-3xl bg-gray-300"
+                  placeholder="Search for a food"
+                  required=""
+                />
+              </button>
             </div>
           </form>
         </div>
