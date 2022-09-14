@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineClose, AiOutlineFire, AiOutlineSearch } from "react-icons/ai";
 import { GiKnifeFork } from "react-icons/gi";
 import {
@@ -13,9 +13,10 @@ import { FaRobot } from "react-icons/fa";
 import { RiFridgeLine } from "react-icons/ri";
 
 export const FoodSearchModal = ({ setIsModalVisible }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [y, setY] = useState(50);
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState();
+  const [selected, setSelected] = useState("Search");
 
   const options = {
     weekday: "long",
@@ -76,43 +77,51 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
           setHeight={setHeight}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          selected={selected}
+          setSelected={setSelected}
         />
       </div>
     </div>
   );
 };
 
-const LogSlider = ({ y, setY, setIsVisible, height, setHeight }) => {
+const LogSlider = ({
+  y,
+  setY,
+  setIsVisible,
+  height,
+  selected,
+  setSelected,
+}) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
-  // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 0;
 
   const onTouchStart = (e) => {
-    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientY);
   };
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
-    const isDownSwipe = distance > minSwipeDistance;
-    const isUpSwipe = distance < -minSwipeDistance;
+    const isUpSwipe = distance > minSwipeDistance;
+    const isDownSwipe = distance < -minSwipeDistance;
     if (isDownSwipe || isUpSwipe)
-      console.log("swipe", isUpSwipe ? "down" : "up");
-    // add your conditional logic here
-    if (isUpSwipe) {
-      console.log("idiot");
-    }
+      console.log("swipe", isDownSwipe ? "down" : "up");
     if (isDownSwipe) {
       setY(725);
     }
+    if (isUpSwipe) {
+      setY(50);
+    }
   };
+
   useEffect(() => {
     if (y > 400) {
       setIsVisible(true);
-    } else if (y < 50) {
+    } else {
       setIsVisible(false);
     }
   }, [y]);
@@ -121,7 +130,7 @@ const LogSlider = ({ y, setY, setIsVisible, height, setHeight }) => {
     const desiredYBottom = 725;
     const desiredYTop = 49;
     const swipeY = e.touches[0].clientY - 118;
-    // setTouchEnd();
+    setTouchEnd(e.touches[0].clientY);
 
     setY(
       swipeY < desiredYTop
@@ -135,13 +144,13 @@ const LogSlider = ({ y, setY, setIsVisible, height, setHeight }) => {
   return (
     <>
       <div
-        className="bg-white"
+        className="bg-white h-[835px]"
         style={{
           transform: `translateY(${y}px)`,
           height: `${y - height}px`,
         }}
       >
-        <div className="space-x-3 pt-2 absolute right-0 -top-12 ">
+        <div className="space-x-3 pt-1 absolute right-0 -top-12 ">
           <button className="rounded-full bg-slate-300 p-2">
             <MdEditCalendar />
           </button>
@@ -155,22 +164,22 @@ const LogSlider = ({ y, setY, setIsVisible, height, setHeight }) => {
               onTouchMove={handleSwiping}
               onTouchStart={onTouchStart}
               onTouchEnd={onTouchEnd}
-              // Use touch start and touch end events to compare the
-              // y position to see if you are moving up or down.
-
-              // Maybe store the y position in a state variable for comparison.
-              // onTouchStart={}
-              // onTouchEnd={}
-              className="flex justify-center items-center bg-white pt-2 px-60"
+              className="flex justify-center items-center bg-white pt-2 px-10"
             >
               <SliderBar />
             </button>
           </div>
 
           <div className="pt-2  ">
-            <SliderIcons />
+            <SliderIcons selected={selected} setSelected={setSelected} />
           </div>
         </div>
+        {selected === "Search" && <Search />}
+        {selected === "Barcode" && <Barcode />}
+        {/* {}
+        {}
+        {}
+        {} */}
       </div>
     </>
   );
@@ -180,56 +189,114 @@ const SliderBar = () => {
   return <div className="rounded w-8 bg-slate-300 h-2 "></div>;
 };
 
-const SliderIcons = () => {
+const SliderIcons = ({ selected, setSelected }) => {
   return (
     <>
-      <div className="bg-white flex items-center justify-between space-x-3 overflow-auto scrollbar-hide  p-3 pb-[900px] ">
-        <div className="flex flex-col">
-          <button className="flex items-center">
-            <BiBarcodeReader /> <p className="w-20">Barcode</p>
-          </button>
-          <div className="w-full bg-black h-1 my-2.5 hidden"></div>
-        </div>
-        <div className="flex flex-col">
-          <button className="flex items-center">
-            <AiOutlineSearch />
-            <p className="w-16">Search</p>
-          </button>
-          <div className="w-full bg-black h-1 my-2.5 hidden"></div>
-        </div>
-        <div className="flex flex-col">
-          <button className="flex items-center">
-            <MdPlaylistAdd />
-            <p className="w-24">Quick Add</p>
-          </button>
-          <div className="w-full bg-black h-1 my-2.5 hidden"></div>
-        </div>
-
-        <div className="flex flex-col">
-          <button className="flex items-center">
-            <FaRobot />
-            <p className="w-24">AI Describe</p>
-          </button>
-          <div className="w-full bg-black h-1 my-2.5 hidden"></div>
-        </div>
-
-        <div className="flex flex-col">
-          <button className="flex items-center">
-            <RiFridgeLine />
-            <p className="w-24">Custom</p>
-          </button>
-          <div className="w-full bg-black h-1 my-2.5 hidden"></div>
-        </div>
-
-        <div className="flex flex-col">
-          <button className="flex items-center">
-            <BiBook />
-            <p className="w-24">Recipe</p>
-          </button>
-          <div className="w-full bg-black h-1 my-2.5 hidden"></div>
-        </div>
+      <div className="bg-white flex items-center justify-between space-x-3 overflow-auto scrollbar-hide text-sm">
+        <SliderTab
+          selected={selected}
+          setSelected={setSelected}
+          icon={<BiBarcodeReader />}
+          name="Barcode"
+        />
+        <SliderTab
+          selected={selected}
+          setSelected={setSelected}
+          icon={<AiOutlineSearch />}
+          name="Search"
+        />
+        <SliderTab
+          selected={selected}
+          setSelected={setSelected}
+          icon={<MdPlaylistAdd />}
+          name="Quick Add"
+        />
+        <SliderTab
+          selected={selected}
+          setSelected={setSelected}
+          icon={<FaRobot />}
+          name="AI Describe"
+        />
+        <SliderTab
+          selected={selected}
+          setSelected={setSelected}
+          icon={<RiFridgeLine />}
+          name="Custom"
+        />
+        <SliderTab
+          selected={selected}
+          setSelected={setSelected}
+          icon={<BiBook />}
+          name="Recipe"
+        />
       </div>
-      <div className="w-full bg-slate-500 h-1.5 absolute top-[229px] hidden"></div>
+      <div className="bg-slate-300 h-1 w-full absolute top-[52px]"></div>
     </>
   );
+};
+
+const SliderTab = ({ name, icon, selected, setSelected }) => {
+  const isSelected = selected === name;
+  return (
+    <div className="flex flex-col">
+      <button className="flex items-center" onClick={() => setSelected(name)}>
+        {icon} <p className="w-20">{name}</p>
+      </button>
+      <div
+        className={
+          isSelected ? "w-full bg-black h-1 my-2 z-10" : "w-full h-1 my-2"
+        }
+      ></div>
+    </div>
+  );
+};
+
+const Search = () => {
+  return (
+    <div>
+      <div className="fixed bottom-0 w-full p-3 bg-white ">
+        <form>
+          <label
+            htmlFor="default-search"
+            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
+          >
+            Search
+          </label>
+          <div className="relative">
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
+              <svg
+                aria-hidden="true"
+                className="w-5 h-5 text-black "
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+            <button className="w-full" type="button">
+              <input
+                type="search"
+                id="default-search"
+                className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
+                placeholder="Search for a food"
+                required=""
+                autoFocus
+              />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+const Barcode = () => {
+  return <div> hi</div>;
 };
