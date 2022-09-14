@@ -24,7 +24,6 @@
     "react-horizontal-scrolling-menu": "^3.2.0",
     "react-icons": "^4.4.0",
     "react-query": "^3.39.2",
-    "react-swipeable": "^7.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

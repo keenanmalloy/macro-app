@@ -16,9 +16,7 @@ import { useEffect } from "react";
 
 export const FoodSearchModal = ({ setIsModalVisible }) => {
   const [isVisible, setIsVisible] = useState(true);
-  const [height, setHeight] = useState(900);
   const [y, setY] = useState(0);
-
 
   const options = {
     weekday: "long",
@@ -66,15 +64,13 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
           <SliderDot />
         </div>
       ) : null}
-      <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-40">
+      <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-40 -z-50">
         <GiKnifeFork />
 
         <p>Add one or more items below</p>
       </div>
       <div>
         <LogSlider
-          height={height}
-          setHeight={setHeight}
           y={y}
           setY={setY}
           isVisible={isVisible}
@@ -85,35 +81,28 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
   );
 };
 
-const LogSlider = ({ height, setHeight, y, setY, isVisible, setIsVisible }) => {
+const LogSlider = ({ y, setY, setIsVisible }) => {
   useEffect(() => {
     if (y > 725) {
       setY(725);
     } else if (y > 400) {
       setIsVisible(true);
-    } else if (y <= 50) {
+    } else if (y < 50) {
       setY(50);
       setIsVisible(false);
     }
   }, [y]);
 
-  console.log(y)
-
-
-  const handlers = useSwipeable({
-    
-    onSwiping: (eventData) => setHeight(eventData.absY),
-    onSwiping: (eventData) => setY(eventData.absY),
-  });
+  console.log(y);
 
   return (
-    <div>
+    <>
       <div
-        {...handlers}
-        className=" bg-white min-h-[50px] max-h-[900px] relative"
+        className="bg-white "
+        onTouchMove={(e) => setY(e.touches[0].clientY)}
+        // onTouchEnd={() => }
         style={{
           transform: `translateY(${y}px)`,
-          height: `${height - y}px  `,
         }}
       >
         <div className="space-x-3 pt-2 absolute right-0 -top-12 ">
@@ -124,15 +113,18 @@ const LogSlider = ({ height, setHeight, y, setY, isVisible, setIsVisible }) => {
             Log Items
           </button>
         </div>
-        <div className="flex justify-center items-center bg-white pt-2">
-          <SliderBar />
-        </div>
+        <div>
+          <div className="flex justify-center items-center bg-white pt-2">
+            <SliderBar />
+          </div>
 
-        <div className="pt-2 ">
-          <SliderIcons />
+          <div className="pt-2 ">
+            <SliderIcons />
+          </div>
         </div>
       </div>
-    </div>
+      <div className="bg-white h-[900px]"></div>
+    </>
   );
 };
 
