@@ -167,12 +167,11 @@ const LogSlider = ({ y, setY, setIsVisible, height, setHeight }) => {
             </button>
           </div>
 
-          <div className="pt-2 ">
+          <div className="pt-2  ">
             <SliderIcons />
           </div>
         </div>
       </div>
-      <div className="bg-white h-[900px] "></div>
     </>
   );
 };
@@ -184,7 +183,7 @@ const SliderBar = () => {
 const SliderIcons = () => {
   return (
     <>
-      <div className="bg-white flex items-center justify-between space-x-3 overflow-auto scrollbar-hide  p-3 ">
+      <div className="bg-white flex items-center justify-between space-x-3 overflow-auto scrollbar-hide  p-3 pb-[900px] ">
         <div className="flex flex-col">
           <button className="flex items-center">
             <BiBarcodeReader /> <p className="w-20">Barcode</p>
