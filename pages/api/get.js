@@ -1,31 +1,34 @@
-import fetch from "node-fetch";
+import axios from "axios";
 
 export default function handler(req, res) {
-  console.log({ req });
-  const params = {
-    api_key: process.env.REACT_APP_API_KEY,
-    query: req.query.search,
-    dataType: "Branded",
-    pagesize: 15,
-  };
-
-  const api_url = `https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${encodeURIComponent(
-    params.api_key
-  )}&query=${encodeURIComponent(params.query)}&dataType=${encodeURIComponent(
-    params.dataType
-  )}&pageSize=${encodeURIComponent(params.pagesize)}`;
+  const api_url = `https://trackapi.nutritionix.com/v2/search/instant?query=apple&detailed=true`;
 
   async function getData() {
-    const data = await fetch(api_url);
-    return await data.json();
+    try {
+      const response = await axios.get(api_url, {
+        headers: {
+          "x-app-id": process.env.NEXT_PUBLIC_NUTRITIONIX_APP_ID,
+          "x-app-key": process.env.NEXT_PUBLIC_NUTRITIONIX_APP_KEY,
+        },
+      });
+      res.status(200).json({ response: response.data });
+    } catch (error) {
+      res.status(500).json({ error: "failed to load data" });
+    }
   }
-
-  getData()
-    .then((data) => {
-      return res.json(data.foods);
-    })
-    .catch((err) => {
-      console.log(err);
-      return res.json(err);
-    });
+  getData();
 }
+
+// https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${encodeURIComponent(
+//     params.api_key
+//   )}&query=${encodeURIComponent(params.query)}&dataType=${encodeURIComponent(
+//     params.dataType
+//   )}&pageSize=${encodeURIComponent(params.pagesize)}
+
+// axios.get(’https://trackapi.nutritionix.com/v2/search/instant?query=apple', {
+//  headers: {
+//    ‘x-app-id’: ‘your id’,
+//    ‘x-app-key’: ‘your key’,
+//  },
+//  ...
+// })
