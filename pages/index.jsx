@@ -11,7 +11,7 @@ import { SearchBar } from "../app/components/SearchBar";
 export default function HomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <div>
+    <div className="overscroll-contain">
       {isModalVisible ? (
         <FoodSearchModal
           isModalVisible={isModalVisible}

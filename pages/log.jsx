@@ -9,9 +9,12 @@ export default function LogPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
-    <div>
+    <div className="overscroll-contain">
       {isModalVisible ? (
-        <FoodSearchModal isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
+        <FoodSearchModal
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
       ) : (
         <>
           <LogHeader />
