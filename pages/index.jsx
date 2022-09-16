@@ -11,14 +11,19 @@ import Head from "next/head";
 
 export default function HomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      // Hide the address bar:
+      window.scrollTo(0, 1);
+    }, 0);
+  });
   return (
     <div>
       <Head>
         <title>Home</title>
         <meta name="mobile-web-app-capable" content="yes" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
       </Head>
       {isModalVisible ? (
         <FoodSearchModal
