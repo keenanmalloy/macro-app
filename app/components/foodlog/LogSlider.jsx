@@ -19,7 +19,6 @@ export const LogSlider = ({
   const [touchEnd, setTouchEnd] = useState(null);
   const [isMore, setIsMore] = useState(false);
 
-
   const minSwipeDistance = 0;
 
   const onTouchStart = (e) => {
@@ -35,10 +34,10 @@ export const LogSlider = ({
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         // console.log("swipe", isDownSwipe ? "down" : "up");
-        setY(770);
+        setY(710);
       }
     if (isUpSwipe) {
-      setY(50);
+      setY(0);
     }
   };
 
@@ -51,8 +50,8 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 770;
-    const desiredYTop = 49;
+    const desiredYBottom = 710;
+    const desiredYTop = 0;
     const swipeY = e.touches[0].clientY - 118;
     setTouchEnd(e.touches[0].clientY);
 
@@ -68,37 +67,41 @@ export const LogSlider = ({
   return (
     <>
       <div
-        className={isMore ? "bg-white h-[2700px]" : "bg-white h-[1650px]"}
+        className="relative "
         style={{
           transform: `translateY(${y}px)`,
           height: `${y - height}px`,
         }}
       >
-        <div className="space-x-3 pt-1 sticky">
-          <button className="rounded-full bg-slate-300 p-2">
-            <MdEditCalendar />
-          </button>
-          <button className="rounded-2xl bg-black text-white px-3 py-1">
-            Log Items
-          </button>
-        </div>
-        <div>
-          <div className="flex justify-center">
-            <button
-              onTouchMove={handleSwiping}
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
-              className="flex justify-center items-center bg-white pt-2 px-10"
-            >
-              <SliderBar />
+        <header className="sticky top-0 z-10">
+          <div className="space-x-3 pt-1 flex justify-end bg-slate-50 ">
+            <button className="rounded-full bg-slate-300 p-2">
+              <MdEditCalendar />
+            </button>
+            <button className="rounded-2xl bg-black text-white px-3 py-1">
+              Log Items
             </button>
           </div>
+          <div className="bg-white">
+            <div className="flex justify-center bg-white">
+              <button
+                onTouchMove={handleSwiping}
+                onTouchStart={onTouchStart}
+                onTouchEnd={onTouchEnd}
+                className="flex justify-center items-center bg-white pt-2 px-10"
+              >
+                <SliderBar />
+              </button>
+            </div>
 
-          <div className="pt-2  ">
-            <SliderIcons selected={selected} setSelected={setSelected} />
+            <div className="pt-2  ">
+              <SliderIcons selected={selected} setSelected={setSelected} />
+            </div>
           </div>
-        </div>
-        {selected === "Search" && <Search  isMore={isMore} setIsMore={setIsMore}/>}
+        </header>
+        {selected === "Search" && (
+          <Search isMore={isMore} setIsMore={setIsMore} />
+        )}
         {selected === "Barcode" && <Barcode />}
         {/* {}
           {}
@@ -116,7 +119,7 @@ const SliderBar = () => {
 const SliderIcons = ({ selected, setSelected }) => {
   return (
     <>
-      <div className="bg-white flex items-center justify-between space-x-3 overflow-auto scrollbar-hide text-sm">
+      <div className="bg-white flex items-center justify-between  overflow-auto scrollbar-hide text-sm ">
         <SliderTab
           selected={selected}
           setSelected={setSelected}
@@ -154,7 +157,6 @@ const SliderIcons = ({ selected, setSelected }) => {
           name="Recipe"
         />
       </div>
-      <div className="bg-slate-300 h-1 w-full fixed top-[88px]"></div>
     </>
   );
 };
@@ -162,13 +164,18 @@ const SliderIcons = ({ selected, setSelected }) => {
 const SliderTab = ({ name, icon, selected, setSelected }) => {
   const isSelected = selected === name;
   return (
-    <div className="flex flex-col">
-      <button className="flex items-center" onClick={() => setSelected(name)}>
+    <div className="flex flex-col relative">
+      <button
+        className="flex items-center py-2"
+        onClick={() => setSelected(name)}
+      >
         {icon} <p className="w-20">{name}</p>
       </button>
       <div
         className={
-          isSelected ? "w-full bg-black h-1 my-2 z-10" : "w-full h-1 my-2"
+          isSelected
+            ? "w-full bg-black h-1  absolute bottom-0 "
+            : "w-full bg-slate-300 h-1 absolute bottom-0"
         }
       ></div>
     </div>

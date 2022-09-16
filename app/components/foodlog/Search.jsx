@@ -63,7 +63,7 @@ export const Search = ({ isMore, setIsMore }) => {
     e.preventDefault();
   };
   return (
-    <div>
+    <div className="bg-white ">
       <div
         onTouchMove={handleSwiping}
         onTouchStart={onTouchStart}
@@ -93,7 +93,8 @@ export const Search = ({ isMore, setIsMore }) => {
           data?.branded.map((item, i) => <FoodRow item={item} key={i} />)}
       </div>
       <div
-        className={''
+        className={
+          ""
           // isMore
           //   ? "fixed top-[2700px] w-full pb-10 px-3 bg-white "
           //   : "fixed top-[1610px] w-full pb-10 px-3 bg-white "

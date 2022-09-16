@@ -8,7 +8,7 @@ import { LogSlider } from "./LogSlider";
 
 export const FoodSearchModal = ({ setIsModalVisible }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [y, setY] = useState(50);
+  const [y, setY] = useState(0);
   const [height, setHeight] = useState();
   const [selected, setSelected] = useState("Search");
 
@@ -20,7 +20,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
   return (
     <>
-      <div className="bg-slate-50 h-[915px] overflow-hidden overscroll-y-none ">
+      <div className="bg-slate-50 h-screen overflow-hidden overscroll-y-none ">
         {isVisible ? (
           <div className="flex justify-between items-center p-2">
             <button onClick={() => setIsModalVisible(false)}>
@@ -35,7 +35,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
           </div>
         ) : null}
 
-        <div className="flex justify-evenly pt-2">
+        <div className="flex justify-evenly py-3">
           <div className="w-full px-2">
             <div className="flex space-x-1">
               <AiOutlineFire />
