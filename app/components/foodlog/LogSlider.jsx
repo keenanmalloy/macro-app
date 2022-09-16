@@ -33,7 +33,7 @@ export const LogSlider = ({
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         // console.log("swipe", isDownSwipe ? "down" : "up");
-        setY(750);
+        setY(770);
       }
     if (isUpSwipe) {
       setY(50);
@@ -49,7 +49,7 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 750;
+    const desiredYBottom = 770;
     const desiredYTop = 49;
     const swipeY = e.touches[0].clientY - 118;
     setTouchEnd(e.touches[0].clientY);
