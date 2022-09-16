@@ -83,6 +83,7 @@ time,
 mark,
 audio,
 video {
+  overscroll-behavior-y: contain;
   margin: 0;
   padding: 0;
   border: 0;
