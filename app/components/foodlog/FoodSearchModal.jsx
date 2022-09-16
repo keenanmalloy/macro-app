@@ -6,8 +6,6 @@ import { SliderDot } from "/app/components/dashboard/SliderDot";
 import { BsDot } from "react-icons/bs";
 import { LogSlider } from "./LogSlider";
 
-
-
 export const FoodSearchModal = ({ setIsModalVisible }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [y, setY] = useState(50);
@@ -22,7 +20,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
   return (
     <>
-      <div className="bg-slate-50 h-[915px] max-h-full overflow-hidden">
+      <div className="bg-slate-50 h-[915px]  overflow-hidden">
         {isVisible ? (
           <div className="flex justify-between items-center p-2">
             <button onClick={() => setIsModalVisible(false)}>
@@ -66,7 +64,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
           <p>Add one or more items below</p>
         </div>
-        <div>
+        <div className={y <= 50 ? " overflow-auto h-full " : null}>
           <LogSlider
             y={y}
             setY={setY}

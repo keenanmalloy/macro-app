@@ -17,6 +17,8 @@ export const LogSlider = ({
 }) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [isMore, setIsMore] = useState(false);
+
 
   const minSwipeDistance = 0;
 
@@ -66,13 +68,13 @@ export const LogSlider = ({
   return (
     <>
       <div
-        className="bg-white h-[835px]"
+        className={isMore ? "bg-white h-[2700px]" : "bg-white h-[1650px]"}
         style={{
           transform: `translateY(${y}px)`,
           height: `${y - height}px`,
         }}
       >
-        <div className="space-x-3 pt-1 absolute right-0 -top-12 ">
+        <div className="space-x-3 pt-1 sticky">
           <button className="rounded-full bg-slate-300 p-2">
             <MdEditCalendar />
           </button>
@@ -96,7 +98,7 @@ export const LogSlider = ({
             <SliderIcons selected={selected} setSelected={setSelected} />
           </div>
         </div>
-        {selected === "Search" && <Search />}
+        {selected === "Search" && <Search  isMore={isMore} setIsMore={setIsMore}/>}
         {selected === "Barcode" && <Barcode />}
         {/* {}
           {}
@@ -152,7 +154,7 @@ const SliderIcons = ({ selected, setSelected }) => {
           name="Recipe"
         />
       </div>
-      <div className="bg-slate-300 h-1 w-full absolute top-[52px]"></div>
+      <div className="bg-slate-300 h-1 w-full fixed top-[88px]"></div>
     </>
   );
 };

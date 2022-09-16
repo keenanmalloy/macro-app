@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { FoodRow } from "./FoodRow";
 
-export const Search = () => {
+export const Search = ({ isMore, setIsMore }) => {
   const [foodSwipe, setFoodSwipe] = useState(0);
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  const [isMore, setIsMore] = useState(false);
   const commonFoodSize = 3;
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -66,7 +65,6 @@ export const Search = () => {
   return (
     <div>
       <div
-        className="absolute top-16 left-0 right-0"
         onTouchMove={handleSwiping}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
@@ -94,7 +92,13 @@ export const Search = () => {
         {data?.branded &&
           data?.branded.map((item, i) => <FoodRow item={item} key={i} />)}
       </div>
-      <div className="fixed bottom-0 w-full p-3 bg-white ">
+      <div
+        className={''
+          // isMore
+          //   ? "fixed top-[2700px] w-full pb-10 px-3 bg-white "
+          //   : "fixed top-[1610px] w-full pb-10 px-3 bg-white "
+        }
+      >
         <form onSubmit={handleSubmit}>
           <label
             htmlFor="default-search"
@@ -102,36 +106,38 @@ export const Search = () => {
           >
             Search
           </label>
-          <div className="relative">
-            <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
-              <svg
-                aria-hidden="true"
-                className="w-5 h-5 text-black "
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                ></path>
-              </svg>
+          <div>
+            <div className="relative">
+              <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
+                <svg
+                  aria-hidden="true"
+                  className="w-5 h-5 text-black "
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+              </div>
+              <button className="w-full" type="button">
+                <input
+                  type="search"
+                  id="default-search"
+                  onChange={handleSearch}
+                  value={search}
+                  className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
+                  placeholder="Search for a food"
+                  required=""
+                  autoFocus
+                />
+              </button>
             </div>
-            <button className="w-full" type="button">
-              <input
-                type="search"
-                id="default-search"
-                onChange={handleSearch}
-                value={search}
-                className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
-                placeholder="Search for a food"
-                required=""
-                autoFocus
-              />
-            </button>
           </div>
         </form>
       </div>
