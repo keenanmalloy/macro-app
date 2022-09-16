@@ -20,7 +20,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
   return (
     <>
-      <div className="bg-slate-50 h-[915px]  overflow-hidden">
+      <div className="bg-slate-50 h-[915px]  overflow-hidden overscroll-contain">
         {isVisible ? (
           <div className="flex justify-between items-center p-2">
             <button onClick={() => setIsModalVisible(false)}>
