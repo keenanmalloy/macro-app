@@ -4,7 +4,6 @@ import { LogTime } from "../app/components/foodlog/LogTime";
 import { Footer } from "../app/components/Footer";
 import { SearchBar } from "../app/components/SearchBar";
 import { FoodSearchModal } from "../app/components/foodlog/FoodSearchModal";
-import "prevent-pull-refresh";
 
 export default function LogPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
