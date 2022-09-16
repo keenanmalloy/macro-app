@@ -7,6 +7,7 @@ import { SliderDot } from "../app/components/dashboard/SliderDot";
 import { Footer } from "../app/components/Footer";
 import { FoodSearchModal } from "../app/components/foodlog/FoodSearchModal";
 import { SearchBar } from "../app/components/SearchBar";
+import Head from "next/head";
 
 export default function HomePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
