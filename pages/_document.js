@@ -19,7 +19,8 @@ export default function Document() {
           sizes="16x16"
           href="/favicon-16x16.png"
         /> */}
-
+        <meta name="mobile-wep-app-capable" content="yes" />
+        <meta name="apple-mobile-wep-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#111827" />
         <meta name="theme-color" content="#111827" />
       </Head>
