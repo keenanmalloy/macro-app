@@ -12,19 +12,19 @@ export const Search = ({ isMore, setIsMore }) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
-  useEffect(() => {
-    if (search.length > 0) {
-      axios
-        .get("/api/get")
-        .then((res) => {
-          setData(res.data.response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    setIsSearching(true);
-  }, [search]);
+  // useEffect(() => {
+  //   if (search.length > 0) {
+  //     axios
+  //       .get("/api/get")
+  //       .then((res) => {
+  //         setData(res.data.response);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+  //   setIsSearching(true);
+  // }, [search]);
 
   const minSwipeDistance = 0;
 
@@ -59,6 +59,15 @@ export const Search = ({ isMore, setIsMore }) => {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
+    setIsSearching(true);
+    axios
+    .get("/api/get")
+    .then((res) => {
+      setData(res.data.response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   };
 
   const handleSubmit = (e) => {
@@ -74,7 +83,7 @@ export const Search = ({ isMore, setIsMore }) => {
         //   transform: `translateY(${foodSwipe}px)`,
         // }}
       >
-        {isSearching ? null : (
+        {!isSearching ? null : (
           <div className="flex justify-between">
             <h3>Common</h3>
             <div className="flex">
@@ -92,7 +101,7 @@ export const Search = ({ isMore, setIsMore }) => {
               .map((item, i) => <FoodRow item={item} key={i} />)
           : data?.common &&
             data?.common.map((item, i) => <FoodRow item={item} key={i} />)}
-        {isSearching ? null : <h3>Branded</h3>}
+        {!isSearching ? null : <h3>Branded</h3>}
         {data?.branded &&
           data?.branded.map((item, i) => <FoodRow item={item} key={i} />)}
       </div>
@@ -105,7 +114,7 @@ export const Search = ({ isMore, setIsMore }) => {
             Search
           </label>
           <div className="pt-40">
-            <div className="absolute w-full bottom-28">
+            <div className="absolute w-full bottom-20">
               <div className="relative">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
                   <svg
