@@ -63,7 +63,7 @@ export const Search = ({ isMore, setIsMore }) => {
     e.preventDefault();
   };
   return (
-    <div className="bg-white min-h-[800px]">
+    <div className="">
       <div
         onTouchMove={handleSwiping}
         onTouchStart={onTouchStart}
@@ -100,37 +100,39 @@ export const Search = ({ isMore, setIsMore }) => {
           >
             Search
           </label>
-          <div>
-            <div className="relative">
-              <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
-                <svg
-                  aria-hidden="true"
-                  className="w-5 h-5 text-black "
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  ></path>
-                </svg>
+          <div className="">
+            <div className="relative w-full bottom-10 pb-5 pt-10">
+              <div className="relative">
+                <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-black "
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <button className="w-full" type="button">
+                  <input
+                    type="search"
+                    id="default-search"
+                    onChange={handleSearch}
+                    value={search}
+                    className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
+                    placeholder="Search for a food"
+                    required=""
+                    autoFocus
+                  />
+                </button>
               </div>
-              <button className="w-full" type="button">
-                <input
-                  type="search"
-                  id="default-search"
-                  onChange={handleSearch}
-                  value={search}
-                  className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
-                  placeholder="Search for a food"
-                  required=""
-                  autoFocus
-                />
-              </button>
             </div>
           </div>
         </form>
