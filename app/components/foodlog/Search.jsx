@@ -63,7 +63,7 @@ export const Search = ({ isMore, setIsMore }) => {
     e.preventDefault();
   };
   return (
-    <div className="bg-white ">
+    <div className="bg-white min-h-[800px]">
       <div
         onTouchMove={handleSwiping}
         onTouchStart={onTouchStart}
