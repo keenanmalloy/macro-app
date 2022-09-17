@@ -101,7 +101,7 @@ export const Search = ({ isMore, setIsMore }) => {
             Search
           </label>
           <div className="">
-            <div className="relative w-full bottom-10 pb-5 pt-10">
+            <div className="relative w-full bottom-10 pt-10">
               <div className="relative">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
                   <svg
