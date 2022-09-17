@@ -92,14 +92,7 @@ export const Search = ({ isMore, setIsMore }) => {
         {data?.branded &&
           data?.branded.map((item, i) => <FoodRow item={item} key={i} />)}
       </div>
-      <div
-        className={
-          ""
-          // isMore
-          //   ? "fixed top-[2700px] w-full pb-10 px-3 bg-white "
-          //   : "fixed top-[1610px] w-full pb-10 px-3 bg-white "
-        }
-      >
+      <div>
         <form onSubmit={handleSubmit}>
           <label
             htmlFor="default-search"
