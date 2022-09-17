@@ -74,7 +74,7 @@ export const Search = ({ isMore, setIsMore }) => {
     e.preventDefault();
   };
   return (
-    <div className="">
+    <div className="min-h-[700px]">
       <div
         onTouchMove={handleSwiping}
         onTouchStart={onTouchStart}
@@ -105,7 +105,7 @@ export const Search = ({ isMore, setIsMore }) => {
         {data?.branded &&
           data?.branded.map((item, i) => <FoodRow item={item} key={i} />)}
       </div>
-      <div>
+      <div >
         <form onSubmit={handleSubmit}>
           <label
             htmlFor="default-search"

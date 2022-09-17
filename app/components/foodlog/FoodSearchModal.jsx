@@ -22,7 +22,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
     <>
       <div className="bg-slate-50 h-screen overflow-hidden overscroll-y-none ">
         {isVisible ? (
-          <div className="flex justify-between items-center p-2">
+          <div className="flex justify-between items-center p-2 pt-5">
             <button onClick={() => setIsModalVisible(false)}>
               <AiOutlineClose size={25} />
             </button>

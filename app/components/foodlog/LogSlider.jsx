@@ -67,7 +67,7 @@ export const LogSlider = ({
   return (
     <>
       <div
-        className="relative bg-white min-h-[900px]"
+        className="relative bg-white"
         style={{
           transform: `translateY(${y}px)`,
           height: `${y - height}px`,
