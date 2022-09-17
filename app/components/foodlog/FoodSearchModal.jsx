@@ -20,9 +20,9 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
   return (
     <>
-      <div className="bg-slate-50 h-screen overflow-hidden overscroll-y-none ">
+      <div className="bg-slate-50 h-screen overflow-hidden overscroll-y-none">
         {isVisible ? (
-          <div className="flex justify-between items-center p-2 pt-5">
+          <div className="flex justify-between items-center p-2 pt-10">
             <button onClick={() => setIsModalVisible(false)}>
               <AiOutlineClose size={25} />
             </button>
@@ -59,7 +59,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
             <SliderDot />
           </div>
         ) : null}
-        <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-40 ">
+        <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-60 ">
           <GiKnifeFork />
 
           <p>Add one or more items below</p>

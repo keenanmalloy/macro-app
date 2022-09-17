@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { FoodRow } from "./FoodRow";
 
-export const Search = ({ isMore, setIsMore }) => {
+export const Search = ({ isMore, setIsMore, isSearching, setIsSearching }) => {
   const [foodSwipe, setFoodSwipe] = useState(0);
   const [search, setSearch] = useState("");
   const [data, setData] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
   const commonFoodSize = 3;
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -74,7 +73,7 @@ export const Search = ({ isMore, setIsMore }) => {
     e.preventDefault();
   };
   return (
-    <div className="min-h-[700px]">
+    <div className="min-h-[780px]">
       <div
         onTouchMove={handleSwiping}
         onTouchStart={onTouchStart}
@@ -113,8 +112,8 @@ export const Search = ({ isMore, setIsMore }) => {
           >
             Search
           </label>
-          <div className="">
-            <div className="absolute w-full bottom-0">
+          <div className="pt-40">
+            <div className="fixed w-full bottom-20">
               <div className="relative">
                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 ">
                   <svg

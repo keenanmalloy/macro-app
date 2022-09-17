@@ -18,6 +18,8 @@ export const LogSlider = ({
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [isMore, setIsMore] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+
 
   const minSwipeDistance = 0;
 
@@ -34,7 +36,7 @@ export const LogSlider = ({
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         // console.log("swipe", isDownSwipe ? "down" : "up");
-        setY(640);
+        setY(600);
       }
     if (isUpSwipe) {
       setY(0);
@@ -50,7 +52,7 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 640;
+    const desiredYBottom = 600;
     const desiredYTop = 0;
     const swipeY = e.touches[0].clientY - 118;
     setTouchEnd(e.touches[0].clientY);
@@ -100,7 +102,7 @@ export const LogSlider = ({
           </div>
         </header>
         {selected === "Search" && (
-          <Search isMore={isMore} setIsMore={setIsMore} />
+          <Search isSearching={isSearching} setIsSearching={setIsSearching} isMore={isMore} setIsMore={setIsMore} />
         )}
         {selected === "Barcode" && <Barcode />}
         {/* {}
