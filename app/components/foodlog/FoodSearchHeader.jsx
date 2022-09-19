@@ -27,7 +27,7 @@ export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
         </div>
       ) : null}
 
-      <div className="flex justify-evenly py-3">
+      <div className="flex justify-evenly py-3 fixed w-full">
         <div className="w-full px-2">
           <div className="flex space-x-1">
             <AiOutlineFire />
@@ -47,7 +47,7 @@ export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
       </div>
 
       {isVisible ? (
-        <div className="border-b border-solid border-slate-300">
+        <div className="border-b border-solid border-slate-300 fixed top-20 w-full">
           <SliderDot />
         </div>
       ) : null}
