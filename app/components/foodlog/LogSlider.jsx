@@ -50,6 +50,7 @@ export const LogSlider = ({
     }
   }, [y]);
 
+
   const handleSwiping = (e) => {
     const desiredYBottom = 90;
     const desiredYTop = 0;
@@ -65,10 +66,11 @@ export const LogSlider = ({
     );
   };
   
+  const scrollable = y <= 0 ? "overflow-auto" : null;
 
   return (
     <div
-      className={`overflow-auto bg-white h-full`}
+      className={`${scrollable} bg-white h-full scrollbar-hide`}
       style={{
         transform: `translateY(${y}%)`,
       }}

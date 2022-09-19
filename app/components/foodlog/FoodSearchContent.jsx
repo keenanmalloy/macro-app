@@ -7,7 +7,6 @@ export const FoodSearchContent = ({ isSearching, data }) => {
 
   const handleCommonMore = () => {
     setIsMore(!isMore);
-    s;
   };
 
   const commonFoodSize = 3;
