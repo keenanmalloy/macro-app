@@ -18,7 +18,7 @@ export const LogHeader = () => {
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
   return (
-    <div>
+    <div className="w-full fixed z-50 bg-white">
       <div className="flex justify-between items-center p-3">
         <button>
           <GiHamburgerMenu size={20} />

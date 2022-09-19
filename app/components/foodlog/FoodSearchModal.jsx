@@ -13,10 +13,10 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
   return (
     <div className="bg-slate-50 h-screen overflow-hidden">
-      {/* <FoodSearchHeader
+      <FoodSearchHeader
         isVisible={isVisible}
         setIsModalVisible={setIsModalVisible}
-      /> */}
+      />
       <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-60 ">
         <GiKnifeFork />
 

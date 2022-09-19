@@ -19,7 +19,7 @@ export const LogSlider = ({
   const [touchEnd, setTouchEnd] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
 
-  const minSwipeDistance = 0;
+  const minSwipeDistance = 100;
 
   const onTouchStart = (e) => {
     setTouchEnd(null);
@@ -30,14 +30,15 @@ export const LogSlider = ({
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
     const isUpSwipe = distance > minSwipeDistance;
-    const isDownSwipe = distance < -minSwipeDistance;
+    const isDownSwipe = distance < minSwipeDistance;
+    console.log(distance)
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
-        // console.log("down");
-        setY(90);
+        console.log("down");
+        setY(75);
       }
     if (isUpSwipe) {
-      // console.log("up");
+      console.log("up");
       setY(0);
     }
   };
@@ -50,9 +51,8 @@ export const LogSlider = ({
     }
   }, [y]);
 
-
   const handleSwiping = (e) => {
-    const desiredYBottom = 90;
+    const desiredYBottom = 75;
     const desiredYTop = 0;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
@@ -65,7 +65,7 @@ export const LogSlider = ({
         : swipeY
     );
   };
-  
+
   const scrollable = y <= 0 ? "overflow-auto" : null;
 
   return (
@@ -76,7 +76,7 @@ export const LogSlider = ({
       }}
     >
       <header className="sticky top-0 z-10">
-        <div className="space-x-3 pt-1 flex justify-end bg-slate-50 ">
+        <div className="space-x-3 py-3 flex justify-end bg-slate-50 z-10">
           <button className="rounded-full bg-slate-300 p-2">
             <MdEditCalendar />
           </button>
@@ -101,16 +101,13 @@ export const LogSlider = ({
           </div>
         </div>
       </header>
-      {/* {selected === "Search" && (
-          <Search
-            isSearching={isSearching}
-            setIsSearching={setIsSearching}
-          />
-        )}
-        {selected === "Barcode" && <Barcode />} */}
-      <div>
+      {selected === "Search" && (
         <Search isSearching={isSearching} setIsSearching={setIsSearching} />
-      </div>
+      )}
+      {selected === "Barcode" && <Barcode />}
+      {/* <div>
+        <Search isSearching={isSearching} setIsSearching={setIsSearching} />
+      </div> */}
     </div>
   );
 };

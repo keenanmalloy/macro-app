@@ -4,23 +4,23 @@ import { BiBarcodeReader } from "react-icons/bi";
 export const SearchBar = ({ isModalVisible, setIsModalVisible }) => {
   const [isVisible, setIsVisible] = useState(true);
 
-  const listenToScroll = () => {
-    let heightToHideFrom = 5;
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
+  // const listenToScroll = () => {
+  //   let heightToHideFrom = 5;
+  //   const winScroll =
+  //     document.body.scrollTop || document.documentElement.scrollTop;
 
-    if (winScroll > heightToHideFrom) {
-      isVisible && // to limit setting state only the first time
-        setIsVisible(false);
-    } else {
-      setIsVisible(true);
-    }
-  };
+  //   if (winScroll > heightToHideFrom) {
+  //     isVisible && // to limit setting state only the first time
+  //       setIsVisible(false);
+  //   } else {
+  //     setIsVisible(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", listenToScroll);
-    return () => window.removeEventListener("scroll", listenToScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", listenToScroll);
+  //   return () => window.removeEventListener("scroll", listenToScroll);
+  // }, []);
 
   return (
     <>

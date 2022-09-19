@@ -14,7 +14,7 @@ export default function HomePage() {
 
   
   return (
-    <div>
+    <div >
      
       {isModalVisible ? (
         <FoodSearchModal
