@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export default function handler(req, res) {
-  const api_url = `https://trackapi.nutritionix.com/v2/search/instant?query=apple&detailed=true`;
+  const query = req.query.q;
+
+  const api_url = `https://trackapi.nutritionix.com/v2/search/instant?query=${query}&detailed=true`;
 
   async function getData() {
     try {
