@@ -27,7 +27,7 @@ export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
         </div>
       ) : null}
 
-      <div className="flex justify-evenly py-3">
+      <div className="flex justify-evenly py-3 z-50">
         <div className="w-full px-2">
           <div className="flex space-x-1">
             <AiOutlineFire />

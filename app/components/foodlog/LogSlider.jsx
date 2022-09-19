@@ -40,7 +40,7 @@ export const LogSlider = ({
       console.log("up");
       setY(4);
     }
-    console.log(distance)
+    console.log(distance);
   };
 
   useEffect(() => {
@@ -75,8 +75,8 @@ export const LogSlider = ({
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky top-0 z-10">
-        <div className="space-x-3 py-2 flex justify-end bg-slate-50 z-10">
+      <header className="sticky top-0 ">
+        <div className="space-x-3 py-1 flex justify-end bg-slate-50 z-10">
           <button className="rounded-full bg-slate-300 p-2">
             <MdEditCalendar />
           </button>
