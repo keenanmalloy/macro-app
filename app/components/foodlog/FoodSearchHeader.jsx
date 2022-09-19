@@ -12,7 +12,7 @@ export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
   const hours = ((today.getHours() + 11) % 12) + 1;
 
   return (
-    <header>
+    <header className="fixed w-full">
       {isVisible ? (
         <div className="flex justify-between items-center p-2">
           <button onClick={() => setIsModalVisible(false)}>

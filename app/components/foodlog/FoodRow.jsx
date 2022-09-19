@@ -8,7 +8,7 @@ export const FoodRow = ({ item, i }) => {
       <div className="flex border-b border-solid border-slate-300 w-full">
         <div>
           <h3 className="px-1">{item.food_name}</h3>
-          <div className="flex text-xs">
+          <div className="flex text-xs truncate">
             {item.full_nutrients
               ?.filter((item) => item.attr_id === 208)
               .map((item, i) => (

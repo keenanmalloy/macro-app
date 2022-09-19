@@ -34,7 +34,7 @@ export const LogSlider = ({
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         console.log("down");
-        setY(75);
+        setY(90);
       }
     if (isUpSwipe) {
       console.log("up");
@@ -52,7 +52,7 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 75;
+    const desiredYBottom = 90;
     const desiredYTop = 0;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
@@ -70,7 +70,7 @@ export const LogSlider = ({
 
   return (
     <div
-      className={`${scrollable} bg-white h-full scrollbar-hide relative`}
+      className={`${scrollable} bg-white h-full scrollbar-hide `}
       style={{
         transform: `translateY(${y}%)`,
       }}
