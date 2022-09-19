@@ -64,10 +64,11 @@ export const LogSlider = ({
         : swipeY
     );
   };
+  
 
   return (
     <div
-      className={`overflow-hidden bg-white h-full`}
+      className={`overflow-auto bg-white h-full`}
       style={{
         transform: `translateY(${y}%)`,
       }}
@@ -105,7 +106,7 @@ export const LogSlider = ({
           />
         )}
         {selected === "Barcode" && <Barcode />} */}
-      <div className="absolute bottom-0 w-full">
+      <div>
         <Search isSearching={isSearching} setIsSearching={setIsSearching} />
       </div>
     </div>
