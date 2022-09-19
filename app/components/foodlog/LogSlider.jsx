@@ -17,15 +17,13 @@ export const LogSlider = ({
 }) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  const [isMore, setIsMore] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
-
 
   const minSwipeDistance = 0;
 
   const onTouchStart = (e) => {
     setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientY);
+    setTouchStart(e.touches[0].clientY);
   };
 
   const onTouchEnd = () => {
@@ -35,16 +33,17 @@ export const LogSlider = ({
     const isDownSwipe = distance < -minSwipeDistance;
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
-        // console.log("swipe", isDownSwipe ? "down" : "up");
-        setY(isSearching ? 650 : 600);
+        // console.log("down");
+        setY(90);
       }
     if (isUpSwipe) {
+      // console.log("up");
       setY(0);
     }
   };
 
   useEffect(() => {
-    if (y > 400) {
+    if (y > 40) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -52,10 +51,10 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = isSearching ? 650 : 600;
+    const desiredYBottom = 90;
     const desiredYTop = 0;
-    const swipeY = e.touches[0].clientY - 118;
-    setTouchEnd(e.touches[0].clientY);
+    const swipeY = e.touches[0].clientY / 10;
+    setTouchEnd(swipeY);
 
     setY(
       swipeY < desiredYTop
@@ -67,50 +66,49 @@ export const LogSlider = ({
   };
 
   return (
-    <>
-      <div
-        className="relative bg-white"
-        style={{
-          transform: `translateY(${y}px)`,
-          height: `${y - height}px`,
-        }}
-      >
-        <header className="sticky top-0 z-10">
-          <div className="space-x-3 pt-1 flex justify-end bg-slate-50 ">
-            <button className="rounded-full bg-slate-300 p-2">
-              <MdEditCalendar />
-            </button>
-            <button className="rounded-2xl bg-black text-white px-3 py-1">
-              Log Items
+    <div
+      className={`overflow-hidden bg-white h-full`}
+      style={{
+        transform: `translateY(${y}%)`,
+      }}
+    >
+      <header className="sticky top-0 z-10">
+        <div className="space-x-3 pt-1 flex justify-end bg-slate-50 ">
+          <button className="rounded-full bg-slate-300 p-2">
+            <MdEditCalendar />
+          </button>
+          <button className="rounded-2xl bg-black text-white px-3 py-1">
+            Log Items
+          </button>
+        </div>
+        <div className="bg-white">
+          <div className="flex justify-center bg-white">
+            <button
+              onTouchMove={handleSwiping}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+              className="flex justify-center items-center bg-white pt-2 px-10"
+            >
+              <SliderBar />
             </button>
           </div>
-          <div className="bg-white">
-            <div className="flex justify-center bg-white">
-              <button
-                onTouchMove={handleSwiping}
-                onTouchStart={onTouchStart}
-                onTouchEnd={onTouchEnd}
-                className="flex justify-center items-center bg-white pt-2 px-10"
-              >
-                <SliderBar />
-              </button>
-            </div>
 
-            <div className="pt-2  ">
-              <SliderIcons selected={selected} setSelected={setSelected} />
-            </div>
+          <div className="pt-2  ">
+            <SliderIcons selected={selected} setSelected={setSelected} />
           </div>
-        </header>
-        {selected === "Search" && (
-          <Search isSearching={isSearching} setIsSearching={setIsSearching} isMore={isMore} setIsMore={setIsMore} />
+        </div>
+      </header>
+      {/* {selected === "Search" && (
+          <Search
+            isSearching={isSearching}
+            setIsSearching={setIsSearching}
+          />
         )}
-        {selected === "Barcode" && <Barcode />}
-        {/* {}
-          {}
-          {}
-          {} */}
+        {selected === "Barcode" && <Barcode />} */}
+      <div className="absolute bottom-0 w-full">
+        <Search isSearching={isSearching} setIsSearching={setIsSearching} />
       </div>
-    </>
+    </div>
   );
 };
 

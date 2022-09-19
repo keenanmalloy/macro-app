@@ -10,7 +10,7 @@ import { SearchBar } from "../app/components/SearchBar";
 
 
 export default function HomePage() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
   
   return (
