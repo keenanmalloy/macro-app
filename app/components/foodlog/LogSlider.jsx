@@ -19,7 +19,7 @@ export const LogSlider = ({
   const [touchEnd, setTouchEnd] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
 
-  const minSwipeDistance = 100;
+  const minSwipeDistance = 200;
 
   const onTouchStart = (e) => {
     setTouchEnd(null);
@@ -40,9 +40,10 @@ export const LogSlider = ({
       console.log("up");
       setY(0);
     }
+    console.log(distance)
   };
 
-  console.log(y)
+  
 
   useEffect(() => {
     if (y > 30) {
