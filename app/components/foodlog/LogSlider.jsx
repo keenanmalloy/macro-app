@@ -52,7 +52,7 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 75;
+    const desiredYBottom = 85;
     const desiredYTop = 0;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
