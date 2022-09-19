@@ -36,7 +36,7 @@ export const FoodSearchContent = ({ isSearching, data }) => {
     const isDownSwipe = distance < -minSwipeDistance;
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe && !isMore) {
-        setFoodSwipe(770);
+        setFoodSwipe(800);
       } else if (isDownSwipe && isMore) {
         setFoodSwipe(1850);
       }
