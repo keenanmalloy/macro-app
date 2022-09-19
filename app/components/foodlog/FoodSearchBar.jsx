@@ -57,7 +57,7 @@ export const FoodSearchBar = ({ setIsSearching, setData }) => {
             className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
             placeholder="Search for a food"
             required=""
-            autoFocus
+            // autoFocus
           />
         </button>
       </div>
