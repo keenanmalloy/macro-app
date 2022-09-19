@@ -7,7 +7,7 @@ import { FoodSearchHeader } from "./FoodSearchHeader";
 
 export const FoodSearchModal = ({ setIsModalVisible }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [y, setY] = useState(6);
+  const [y, setY] = useState(7);
   const [height, setHeight] = useState();
   const [selected, setSelected] = useState("Search");
 
