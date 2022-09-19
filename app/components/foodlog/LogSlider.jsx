@@ -70,7 +70,7 @@ export const LogSlider = ({
 
   return (
     <div
-      className={`${scrollable} bg-white h-full scrollbar-hide`}
+      className={`${scrollable} bg-white h-full scrollbar-hide relative`}
       style={{
         transform: `translateY(${y}%)`,
       }}
