@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { FoodRow } from "./FoodRow";
 
-export const FoodSearchContent = ({ isSearching, data }) => {
+export const FoodSearchContent = ({
+  isSearching,
+  data,
+  selectedFood,
+  setSelectedFood,
+}) => {
   const [isMore, setIsMore] = useState(false);
 
   const handleCommonMore = () => {
@@ -28,12 +33,33 @@ export const FoodSearchContent = ({ isSearching, data }) => {
         ? data?.common &&
           data?.common
             .slice(0, commonFoodSize)
-            .map((item, i) => <FoodRow item={item} key={i} />)
+            .map((item, i) => (
+              <FoodRow
+                item={item}
+                key={i}
+                selectedFood={selectedFood}
+                setSelectedFood={setSelectedFood}
+              />
+            ))
         : data?.common &&
-          data?.common.map((item, i) => <FoodRow item={item} key={i} />)}
+          data?.common.map((item, i) => (
+            <FoodRow
+              item={item}
+              key={i}
+              selectedFood={selectedFood}
+              setSelectedFood={setSelectedFood}
+            />
+          ))}
       {!isSearching ? null : <h3>Branded</h3>}
       {data?.branded &&
-        data?.branded.map((item, i) => <FoodRow item={item} key={i} />)}
+        data?.branded.map((item, i) => (
+          <FoodRow
+            item={item}
+            key={i}
+            selectedFood={selectedFood}
+            setSelectedFood={setSelectedFood}
+          />
+        ))}
     </div>
   );
 };

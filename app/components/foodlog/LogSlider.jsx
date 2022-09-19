@@ -14,6 +14,8 @@ export const LogSlider = ({
   height,
   selected,
   setSelected,
+  selectedFood,
+  setSelectedFood,
 }) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -40,7 +42,6 @@ export const LogSlider = ({
       console.log("up");
       setY(7);
     }
-    console.log(distance)
   };
 
   useEffect(() => {
@@ -66,7 +67,7 @@ export const LogSlider = ({
     );
   };
 
-  const scrollable = y <= 0 ? "overflow-auto" : null;
+  const scrollable = y <= 7 ? "overflow-auto" : null;
 
   return (
     <div
@@ -77,12 +78,19 @@ export const LogSlider = ({
     >
       <header className="sticky top-0 z-10">
         <div className="space-x-3 py-2 flex justify-end bg-slate-50 z-10">
-          <button className="rounded-full bg-slate-300 p-2">
-            <MdEditCalendar />
-          </button>
-          <button className="rounded-2xl bg-black text-white px-3 py-2">
-            Log Items
-          </button>
+          {selectedFood.map((food, i) => (
+            <button key={i}>
+              <img className="w-10 h-10 rounded-full" src={food.image} />
+            </button>
+          ))}
+          <div className="space-x-2 flex items-center">
+            <button className="rounded-full bg-slate-300 p-2">
+              <MdEditCalendar />
+            </button>
+            <button className="rounded-2xl bg-black text-white px-3 py-2">
+              Log Items
+            </button>
+          </div>
         </div>
         <div className="bg-white">
           <div className="flex justify-center bg-white">
@@ -102,7 +110,12 @@ export const LogSlider = ({
         </div>
       </header>
       {selected === "Search" && (
-        <Search isSearching={isSearching} setIsSearching={setIsSearching} />
+        <Search
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
+          selectedFood={selectedFood}
+          setSelectedFood={setSelectedFood}
+        />
       )}
       {selected === "Barcode" && <Barcode />}
       {/* <div>

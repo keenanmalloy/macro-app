@@ -4,7 +4,7 @@ import { MdOutlineSettingsSuggest } from "react-icons/md";
 import { BsDot } from "react-icons/bs";
 import { SliderDot } from "/app/components/dashboard/SliderDot";
 
-export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
+export const FoodSearchHeader = ({ isVisible, setIsModalVisible, selectedFood, setSelectedFood }) => {
   const options = {
     weekday: "long",
   };
