@@ -13,17 +13,19 @@ export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
 
   return (
     <header>
-      <div className="flex justify-between items-center p-2">
-        <button onClick={() => setIsModalVisible(false)}>
-          <AiOutlineClose size={25} />
-        </button>
-        <div className="flex">
-          {today.toLocaleDateString("en-US", options)} <BsDot /> {hours}
+      {isVisible ? (
+        <div className="flex justify-between items-center p-2">
+          <button onClick={() => setIsModalVisible(false)}>
+            <AiOutlineClose size={25} />
+          </button>
+          <div className="flex">
+            {today.toLocaleDateString("en-US", options)} <BsDot /> {hours}
+          </div>
+          <button>
+            <MdOutlineSettingsSuggest size={25} />
+          </button>
         </div>
-        <button>
-          <MdOutlineSettingsSuggest size={25} />
-        </button>
-      </div>
+      ) : null}
 
       <div className="flex justify-evenly py-3">
         <div className="w-full px-2">
@@ -44,9 +46,11 @@ export const FoodSearchHeader = ({ isVisible, setIsModalVisible }) => {
         </div>
       </div>
 
-      <div className="border-b border-solid border-slate-300">
-        <SliderDot />
-      </div>
+      {isVisible ? (
+        <div className="border-b border-solid border-slate-300">
+          <SliderDot />
+        </div>
+      ) : null}
     </header>
   );
 };
