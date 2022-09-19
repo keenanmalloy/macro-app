@@ -31,17 +31,18 @@ export const LogSlider = ({
     const distance = touchStart - touchEnd;
     const isUpSwipe = distance > minSwipeDistance;
     const isDownSwipe = distance < minSwipeDistance;
-    console.log(distance)
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         console.log("down");
-        setY(75);
+        setY(90);
       }
     if (isUpSwipe) {
       console.log("up");
       setY(0);
     }
   };
+
+  console.log(y)
 
   useEffect(() => {
     if (y > 40) {
@@ -52,7 +53,7 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 85;
+    const desiredYBottom = 100;
     const desiredYTop = 0;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
