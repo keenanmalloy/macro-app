@@ -34,17 +34,17 @@ export const LogSlider = ({
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         console.log("down");
-        setY(88);
+        setY(87);
       }
     if (isUpSwipe) {
       console.log("up");
-      setY(0);
+      setY(4);
     }
     console.log(distance)
   };
 
   useEffect(() => {
-    if (y > 40) {
+    if (y > 60) {
       setIsVisible(true);
     } else {
       setIsVisible(false);
@@ -52,8 +52,8 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 88;
-    const desiredYTop = 0;
+    const desiredYBottom = 87;
+    const desiredYTop = 4;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
 
@@ -76,11 +76,11 @@ export const LogSlider = ({
       }}
     >
       <header className="sticky top-0 z-10">
-        <div className="space-x-3 py-3 flex justify-end bg-slate-50 z-10">
+        <div className="space-x-3 py-2 flex justify-end bg-slate-50 z-10">
           <button className="rounded-full bg-slate-300 p-2">
             <MdEditCalendar />
           </button>
-          <button className="rounded-2xl bg-black text-white px-3 py-1">
+          <button className="rounded-2xl bg-black text-white px-5 py-2">
             Log Items
           </button>
         </div>

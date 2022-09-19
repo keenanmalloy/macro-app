@@ -17,7 +17,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
         isVisible={isVisible}
         setIsModalVisible={setIsModalVisible}
       />
-      <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-60 ">
+      <div className="flex justify-center space-x-5 text-slate-300 fixed right-0 left-0 top-32 ">
         <GiKnifeFork />
 
         <p>Add one or more items below</p>
