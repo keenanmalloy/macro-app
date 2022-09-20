@@ -76,23 +76,26 @@ export const LogSlider = ({
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky -top-5 z-10 overflow-auto scrollbar-hide">
+      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide">
         <div className="overflow-auto scrollbar-hide">
-        <div className="flex pl-2 pb-2 space-x-5 w-[800px] bg-slate-50 ">
-          {selectedFood.map((food, i) => (
-            <button key={i} className="border-2 p-1 rounded-full ">
-              <img className="rounded-full w-8 h-8 object-cover" src={food.image} />
-            </button>
-          ))}
-          <div className="space-x-2  absolute left-[240px] bg-slate-50 w-full pl-4  h-12 pt-1 ">
-            <button className="rounded-full bg-slate-300 p-2">
-              <MdEditCalendar />
-            </button>
-            <button className="rounded-2xl bg-black text-white px-3 py-2">
-              Log Items
-            </button>
+          <div className="flex pl-2 pb-2 space-x-5 w-[800px] bg-slate-50 ">
+            {selectedFood.map((food, i) => (
+              <button key={i} className="border-2 p-1 rounded-full ">
+                <img
+                  className="rounded-full w-8 h-8 object-cover"
+                  src={food.image}
+                />
+              </button>
+            ))}
+            <div className="space-x-2  overflow-hidden absolute left-[240px] bg-slate-50 w-full pl-4  h-12 pt-1 ">
+              <button className="rounded-full bg-slate-300 p-2">
+                <MdEditCalendar />
+              </button>
+              <button className="rounded-2xl bg-black text-white px-3 py-2">
+                Log Items
+              </button>
+            </div>
           </div>
-        </div>
         </div>
         <div className="bg-white">
           <div className="flex justify-center bg-white">
