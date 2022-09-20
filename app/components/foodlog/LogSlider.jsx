@@ -52,8 +52,6 @@ export const LogSlider = ({
     }
   }, [y]);
 
-  console.log(y);
-
   const handleSwiping = (e) => {
     const desiredYBottom = 87;
     const desiredYTop = 4;
@@ -78,7 +76,7 @@ export const LogSlider = ({
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-5">
+      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-8">
         <div className="overflow-x-auto scrollbar-hide">
           <div className="flex pl-2 pb-2 space-x-5 w-[800px] ">
             {selectedFood.map((food, i) => (
@@ -89,7 +87,13 @@ export const LogSlider = ({
                 />
               </button>
             ))}
-            <div className="space-x-2  overflow-hidden absolute left-[240px] flex items-center w-full pl-4  h-12 ">
+            <div
+              className={
+                !selectedFood
+                  ? "space-x-2  overflow-hidden absolute left-[240px] flex items-center w-full pl-4  h-12 bg-slate-50"
+                  : "space-x-2 overflow-hidden absolute left-[240px] bottom-16 bg-slate-50 w-full pl-4 pt-2 h-12"
+              }
+            >
               <button className="rounded-full bg-slate-300 p-2">
                 <MdEditCalendar />
               </button>

@@ -16,8 +16,11 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         carbs: item.full_nutrients
           ?.filter((item) => item.attr_id === 205)
           .map((item) => Math.round(item.value)),
-        quantity: item.serving_qty,
-      }, ...selectedFood
+        serving_quantity: item.serving_qty,
+        serving_unit: item.serving_unit,
+        serving_weight_grams: item.serving_weight_grams,
+      },
+      ...selectedFood,
     ]);
     console.log(selectedFood);
   };
