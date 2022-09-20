@@ -70,14 +70,18 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
       />
       <div className="flex border-b border-solid border-slate-300 w-full">
         <div>
-          <h3 className="px-1 ">{item.food_name}</h3>
+          <h3 className="px-1 ">
+            {item.food_name.replace(/(^\w)|([-\s]\w)/g, (match) =>
+              match.toUpperCase()
+            )}
+          </h3>
           <div className="flex text-xs ">
             {calories}
             {protein}
             {fats}
             {carbs}
             {item.serving_weight_grams && (
-              <p className="px-1">{item.serving_weight_grams} g</p>
+              <p className="px-1">{Math.round(item.serving_weight_grams)} g</p>
             )}
             {item.serving_qty} {item.serving_unit}
           </div>

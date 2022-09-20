@@ -69,6 +69,8 @@ export const LogSlider = ({
 
   const scrollable = y <= 7 ? "overflow-y-auto" : "overflow-y-hidden";
 
+  const miniIconScroll = selectedFood.length > 4 ? "w-[600px]" : null;
+
   return (
     <div
       className={`${scrollable} bg-white overflow-x-hidden h-full scrollbar-hide `}
@@ -78,7 +80,7 @@ export const LogSlider = ({
     >
       <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-8">
         <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex pl-2 pb-2 space-x-5 w-[800px] ">
+          <div className={`flex pl-2 pb-2 space-x-5 ${miniIconScroll}`}>
             {selectedFood.map((food, i) => (
               <button key={i} className="border-2 p-1 rounded-full ">
                 <img
