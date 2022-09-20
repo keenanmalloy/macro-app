@@ -16,6 +16,12 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
   const [selected, setSelected] = useState("Search");
   const [selectedFood, setSelectedFood] = useState([]);
 
+  const handleRemove = (id) => {
+    const newSelectedFood = selectedFood.filter((food) => food.id !== id);
+    setSelectedFood(newSelectedFood);
+    console.log(selectedFood);
+  };
+
   return (
     <div className="bg-slate-50 h-screen overflow-hidden">
       <FoodSearchHeader
@@ -31,8 +37,8 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
           </div>
         ) : null}
         <div>
-          {selectedFood.map((food, i) => (
-            <div key={i} className="py-3 pl-5 flex  ">
+          {selectedFood.map((food) => (
+            <div key={food.id}  className="py-3 pl-5 flex  ">
               <img src={food.image} className="w-10 h-10 mr-3" />
               <div className="flex border-b border-solid border-slate-300 w-full">
                 <div className=" text-black">
@@ -55,7 +61,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
                       </div>
                       Details
                     </button>
-                    <button className="flex">
+                    <button className="flex" onClick={() => handleRemove(food.id)}>
                       <div className="px-2">
                         <IoIosRemoveCircleOutline color="red" />
                       </div>

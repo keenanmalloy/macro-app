@@ -21,7 +21,7 @@ export const LogSlider = ({
   const [touchEnd, setTouchEnd] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
 
-  const minSwipeDistance = 110;
+  const minSwipeDistance = 150;
 
   const onTouchStart = (e) => {
     setTouchEnd(null);
@@ -78,17 +78,23 @@ export const LogSlider = ({
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-8">
+      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-16">
         <div className="overflow-x-auto scrollbar-hide">
           <div className={`flex pl-2 pb-2 space-x-5 ${miniIconScroll}`}>
-            {selectedFood.map((food, i) => (
-              <button key={i} className="border-2 p-1 rounded-full ">
-                <img
-                  className="rounded-full w-8 h-8 object-cover"
-                  src={food.image}
-                />
-              </button>
-            ))}
+            {y <= 15
+              ? selectedFood.map((food, i) => (
+                  <button
+                    key={i}
+                    className="border-2 p-1 rounded-full "
+                    onClick={() => setY(87)}
+                  >
+                    <img
+                      className="rounded-full w-8 h-8 object-cover"
+                      src={food.image}
+                    />
+                  </button>
+                ))
+              : null}
             <div
               className={
                 !selectedFood

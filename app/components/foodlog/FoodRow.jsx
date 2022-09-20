@@ -1,7 +1,10 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
   const handleSelect = () => {
     setSelectedFood([
       {
+        id: uuidv4(),
         image: item.photo.thumb,
         name: item.food_name,
         calories: item.full_nutrients
@@ -19,10 +22,10 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         serving_quantity: item.serving_qty,
         serving_unit: item.serving_unit,
         serving_weight_grams: item.serving_weight_grams,
+        ...item,
       },
       ...selectedFood,
     ]);
-    console.log(selectedFood);
   };
 
   const calories = item.full_nutrients
@@ -83,7 +86,10 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
             {item.serving_weight_grams && (
               <p className="px-1">{Math.round(item.serving_weight_grams)} g</p>
             )}
-            {item.serving_qty} {item.serving_unit}
+            {Math.round(item.serving_qty) <= 0
+              ? null
+              : Math.round(item.serving_qty)}{" "}
+            {Math.round(item.serving_qty) <= 0 ? null : item.serving_unit}
           </div>
         </div>
       </div>
