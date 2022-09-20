@@ -67,23 +67,24 @@ export const LogSlider = ({
     );
   };
 
-  const scrollable = y <= 7 ? "overflow-auto" : null;
+  const scrollable = y <= 7 ? "overflow-y-auto" : null;
 
   return (
     <div
-      className={`${scrollable} bg-white h-full scrollbar-hide `}
+      className={`${scrollable} bg-white overflow-x-hidden h-full scrollbar-hide `}
       style={{
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky top-0 z-10">
-        <div className="space-x-3 py-2 flex justify-end bg-slate-50 z-10">
+      <header className="sticky -top-5 z-10 overflow-auto scrollbar-hide">
+        <div className="overflow-auto scrollbar-hide">
+        <div className="flex pl-2 pb-2 space-x-5 w-[800px] bg-slate-50 ">
           {selectedFood.map((food, i) => (
-            <button key={i}>
-              <img className="w-10 h-10 rounded-full" src={food.image} />
+            <button key={i} className="border-2 p-1 rounded-full ">
+              <img className="rounded-full w-8 h-8 object-cover" src={food.image} />
             </button>
           ))}
-          <div className="space-x-2 flex items-center">
+          <div className="space-x-2  absolute left-[240px] bg-slate-50 w-full pl-4  h-12 pt-1 ">
             <button className="rounded-full bg-slate-300 p-2">
               <MdEditCalendar />
             </button>
@@ -91,6 +92,7 @@ export const LogSlider = ({
               Log Items
             </button>
           </div>
+        </div>
         </div>
         <div className="bg-white">
           <div className="flex justify-center bg-white">
@@ -104,7 +106,7 @@ export const LogSlider = ({
             </button>
           </div>
 
-          <div className="pt-2  ">
+          <div className="pt-2 overflow-hidden ">
             <SliderIcons selected={selected} setSelected={setSelected} />
           </div>
         </div>
