@@ -40,7 +40,7 @@ export const LogSlider = ({
       }
     if (isUpSwipe) {
       console.log("up");
-      setY(7);
+      setY(4);
     }
   };
 
@@ -52,9 +52,11 @@ export const LogSlider = ({
     }
   }, [y]);
 
+  console.log(y);
+
   const handleSwiping = (e) => {
     const desiredYBottom = 87;
-    const desiredYTop = 7;
+    const desiredYTop = 4;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
 
@@ -67,7 +69,7 @@ export const LogSlider = ({
     );
   };
 
-  const scrollable = y <= 7 ? "overflow-y-auto" : null;
+  const scrollable = y <= 7 ? "overflow-y-auto" : "overflow-y-hidden";
 
   return (
     <div
@@ -76,9 +78,9 @@ export const LogSlider = ({
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide">
-        <div className="overflow-auto scrollbar-hide">
-          <div className="flex pl-2 pb-2 space-x-5 w-[800px] bg-slate-50 ">
+      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-5">
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex pl-2 pb-2 space-x-5 w-[800px] ">
             {selectedFood.map((food, i) => (
               <button key={i} className="border-2 p-1 rounded-full ">
                 <img
@@ -87,7 +89,7 @@ export const LogSlider = ({
                 />
               </button>
             ))}
-            <div className="space-x-2  overflow-hidden absolute left-[240px] bg-slate-50 w-full pl-4  h-12 pt-1 ">
+            <div className="space-x-2  overflow-hidden absolute left-[240px] flex items-center w-full pl-4  h-12 ">
               <button className="rounded-full bg-slate-300 p-2">
                 <MdEditCalendar />
               </button>

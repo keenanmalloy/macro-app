@@ -30,7 +30,7 @@ export const FoodSearchBar = ({ setIsSearching, setData }) => {
     e.preventDefault();
   };
   return (
-    <form onSubmit={handleSubmit} className=" p-3 bg-white pb-20">
+    <form onSubmit={handleSubmit} className=" p-3 bg-white pb-14">
       {loading && <div>Searching...</div>}
       <div className="relative">
         <div className="flex absolute inset-y-0 left-0 items-center pl-3">
