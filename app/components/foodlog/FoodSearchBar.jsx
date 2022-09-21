@@ -54,7 +54,7 @@ export const FoodSearchBar = ({ setIsSearching, setData }) => {
           <input
             type="search"
             onChange={(e) => setSearch(e.target.value)}
-            className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
+            className="block p-3 pl-10 w-full text-sm rounded-3xl bg-gray-200 border-2 focus:border-2 focus:border-solid focus:border-black focus:outline-none"
             placeholder="Search for a food"
             required=""
             autoFocus

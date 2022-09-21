@@ -36,7 +36,7 @@ export const LogSlider = ({
     if (isDownSwipe || isUpSwipe)
       if (isDownSwipe) {
         console.log("down");
-        setY(87);
+        setY(80);
       }
     if (isUpSwipe) {
       console.log("up");
@@ -53,7 +53,7 @@ export const LogSlider = ({
   }, [y]);
 
   const handleSwiping = (e) => {
-    const desiredYBottom = 87;
+    const desiredYBottom = 80;
     const desiredYTop = 4;
     const swipeY = e.touches[0].clientY / 10;
     setTouchEnd(swipeY);
@@ -78,37 +78,39 @@ export const LogSlider = ({
         transform: `translateY(${y}%)`,
       }}
     >
-      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-16">
+      <header className="sticky -top-5 z-10 overflow-hidden scrollbar-hide bg-slate-50 pt-10">
         <div className="overflow-x-auto scrollbar-hide">
-          <div className={`flex pl-2 pb-2 space-x-5 ${miniIconScroll}`}>
-            {y <= 15
-              ? selectedFood.map((food, i) => (
-                  <button
-                    key={i}
-                    className="border-2 p-1 rounded-full "
-                    onClick={() => setY(87)}
-                  >
-                    <img
-                      className="rounded-full w-8 h-8 object-cover"
-                      src={food.image}
-                    />
-                  </button>
-                ))
-              : null}
-            <div
-              className={
-                !selectedFood
-                  ? "space-x-2  overflow-hidden absolute left-[240px] flex items-center w-full pl-4  h-12 bg-slate-50"
-                  : "space-x-2 overflow-hidden absolute left-[240px] bottom-16 bg-slate-50 w-full pl-4 pt-2 h-12"
-              }
-            >
-              <button className="rounded-full bg-slate-300 p-2">
-                <MdEditCalendar />
-              </button>
-              <button className="rounded-2xl bg-black text-white px-3 py-2">
-                Log Items
-              </button>
-            </div>
+          <div className={`pl-2 pb-2 space-x-5 ${miniIconScroll}`}>
+            {y <= 15 ? (
+              selectedFood.map((food, i) => (
+                <button
+                  key={i}
+                  className="border-2 p-1 rounded-full "
+                  onClick={() => setY(87)}
+                >
+                  <img
+                    className="rounded-full w-8 h-8 object-cover"
+                    src={food.image}
+                  />
+                </button>
+              ))
+            ) : (
+              <div></div>
+            )}
+          </div>
+          <div
+            className={
+              !selectedFood
+                ? "space-x-2  overflow-hidden absolute left-[240px] flex items-center w-full pl-4 py-2  bg-slate-50"
+                : "space-x-2 overflow-hidden absolute left-[240px] bottom-16 bg-slate-50 w-full pl-4 py-2 "
+            }
+          >
+            <button className="rounded-full bg-slate-300 p-2">
+              <MdEditCalendar />
+            </button>
+            <button className="rounded-2xl bg-black text-white px-3 py-2">
+              Log Items
+            </button>
           </div>
         </div>
         <div className="bg-white">

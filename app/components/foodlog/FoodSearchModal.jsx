@@ -42,8 +42,10 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
       <FoodSearchHeader
         isVisible={isVisible}
         setIsModalVisible={setIsModalVisible}
-        selectedFood={selectedFood}
-        setSelectedFood={setSelectedFood}
+        reducedCalories={reducedCalories}
+        reducedProtein={reducedProtein}
+        reducedFats={reducedFats}
+        reducedCarbs={reducedCarbs}
       />
       <div className="fixed top-32 overflow-auto h-screen scrollbar-hide">
         {selectedFood.length < 1 ? (
@@ -162,10 +164,10 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
 
 const CircleProgress = ({ percentage }) => {
   return (
-    <svg class="w-20 h-20">
+    <svg className="w-20 h-20">
       <circle
-        class="text-gray-300"
-        stroke-width="4"
+        className="text-gray-300"
+        strokeWidth="4"
         stroke="currentColor"
         fill="transparent"
         r="15"
@@ -173,10 +175,10 @@ const CircleProgress = ({ percentage }) => {
         cy="40"
       />
       <circle
-        class="text-slate-500"
-        stroke-width="5"
+        className="text-slate-500"
+        strokeWidth="5"
         stroke="currentColor"
-        stroke-linecap="round"
+        strokeLinecap="round"
         fill="transparent"
       />
     </svg>
@@ -247,15 +249,19 @@ const GeneralNutritionInfo = ({ selectedFood }) => {
       <div className="w-full px-7">
         <div className="flex justify-between pt-4">
           <p>Alcohol</p>
-          <p>{!reducedAlcohol ? "-- " : reducedAlcohol} g</p>
+          <p className="text-right">
+            {!reducedAlcohol ? "-- " : reducedAlcohol} g
+          </p>
         </div>
         <div className="flex justify-between py-3">
           <p>Caffiene</p>
-          <p>{!reducedCaffiene ? "-- " : reducedCaffiene} mg</p>
+          <p className="text-right">
+            {!reducedCaffiene ? "-- " : reducedCaffiene} mg
+          </p>
         </div>
         <div className="flex justify-between">
           <p>Water</p>
-          <p>{!reducedWater ? "-- " : reducedWater} g</p>
+          <p className="text-right">{!reducedWater ? "-- " : reducedWater} g</p>
         </div>
       </div>
     </div>
@@ -263,8 +269,6 @@ const GeneralNutritionInfo = ({ selectedFood }) => {
 };
 
 const CarbBreakdown = ({ reducedCarbs, selectedFood }) => {
-  console.log(selectedFood);
-
   const reducedFiber = selectedFood.reduce((acc, food) => {
     return acc + food.fiber[0];
   }, 0);
@@ -281,8 +285,6 @@ const CarbBreakdown = ({ reducedCarbs, selectedFood }) => {
     return acc + food.added_sugar[0];
   }, 0);
 
-  console.log(selectedFood);
-
   return (
     <div>
       <h3 className="pl-7 pt-8 text-lg">Carb Breakdown</h3>
@@ -298,7 +300,7 @@ const CarbBreakdown = ({ reducedCarbs, selectedFood }) => {
             </div>
             <p className="pt-2">Net (Non-fiber)</p>
           </div>
-          <div>
+          <div className="text-right">
             <p>{!reducedCarbs ? "--" : reducedCarbs}g</p>
             <div className=" pt-2 space-y-2">
               <p>{!reducedFiber ? "--" : reducedFiber}g</p>
@@ -382,7 +384,7 @@ const ProteinBreakdown = ({ reducedProtein, selectedFood }) => {
               <p>Valine</p>
             </div>
           </div>
-          <div className=" space-y-2">
+          <div className="text-right space-y-2">
             <p>{!reducedProtein ? "-- " : reducedProtein} g</p>
             <p>{!reducedCystine ? "-- " : reducedCystine} g</p>
             <p>{!reducedHistidine ? "-- " : reducedHistidine} g</p>
@@ -446,7 +448,7 @@ const FatBreakdown = ({ reducedFats, selectedFood }) => {
               <p>Trans Fat</p>
             </div>
           </div>
-          <div>
+          <div className="text-right">
             <p>{!reducedFats ? "-- " : reducedFats} g</p>
             <div className=" pt-2 space-y-2">
               <p>{!reducedMono ? "-- " : reducedMono} g</p>
@@ -530,7 +532,7 @@ const Vitamins = ({ selectedFood }) => {
               <p>Vitamin K</p>
             </div>
           </div>
-          <div className="pt-2 space-y-2 ">
+          <div className="pt-2 space-y-2 text-right">
             <p className="pl-1.5">
               {!reducedThiamine ? "-- " : reducedThiamine} mg
             </p>
@@ -608,7 +610,7 @@ const Minerals = ({ selectedFood }) => {
               <p>Zinc</p>
             </div>
           </div>
-          <div className="pt-2 space-y-2 ">
+          <div className="pt-2 space-y-2 text-right">
             <p className="pl-1.5">
               {!reducedCalcium ? "-- " : reducedCalcium} mg
             </p>
