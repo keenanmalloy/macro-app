@@ -7,6 +7,15 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         id: uuidv4(),
         image: item.photo.thumb,
         name: item.food_name,
+        alcohol: item.full_nutrients
+          ?.filter((item) => item.attr_id === 221)
+          .map((item) => Math.round(item.value)),
+        caffiene: item.full_nutrients
+          ?.filter((item) => item.attr_id === 262)
+          .map((item) => Math.round(item.value)),
+        water: item.full_nutrients
+          ?.filter((item) => item.attr_id === 255)
+          .map((item) => Math.round(item.value)),
         calories: item.full_nutrients
           ?.filter((item) => item.attr_id === 208)
           .map((item) => Math.round(item.value)),
@@ -19,10 +28,148 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         carbs: item.full_nutrients
           ?.filter((item) => item.attr_id === 205)
           .map((item) => Math.round(item.value)),
+        fiber: item.full_nutrients
+          ?.filter((item) => item.attr_id === 291)
+          .map((item) => Math.round(item.value)),
+        starch: item.full_nutrients
+          ?.filter((item) => item.attr_id === 209)
+          .map((item) => Math.round(item.value)),
+        sugar: item.full_nutrients
+          ?.filter((item) => item.attr_id === 269)
+          .map((item) => Math.round(item.value)),
+        added_sugar: item.full_nutrients
+          ?.filter((item) => item.attr_id === 539)
+          .map((item) => Math.round(item.value)),
+        cystine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 507)
+          .map((item) => Math.round(item.value)),
+        histidine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 512)
+          .map((item) => Math.round(item.value)),
+        isoleuciine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 503)
+          .map((item) => Math.round(item.value)),
+        leucine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 504)
+          .map((item) => Math.round(item.value)),
+        lysine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 505)
+          .map((item) => Math.round(item.value)),
+        methionine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 506)
+          .map((item) => Math.round(item.value)),
+        phenylalanine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 508)
+          .map((item) => Math.round(item.value)),
+        threonine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 502)
+          .map((item) => Math.round(item.value)),
+        tryptophan: item.full_nutrients
+          ?.filter((item) => item.attr_id === 501)
+          .map((item) => Math.round(item.value)),
+        tyrosine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 509)
+          .map((item) => Math.round(item.value)),
+        valine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 510)
+          .map((item) => Math.round(item.value)),
+        monofat: item.full_nutrients
+          ?.filter((item) => item.attr_id === 645)
+          .map((item) => Math.round(item.value)),
+        polyfat: item.full_nutrients
+          ?.filter((item) => item.attr_id === 646)
+          .map((item) => Math.round(item.value)),
+        omega3ala: item.full_nutrients
+          ?.filter((item) => item.attr_id === 851)
+          .map((item) => Math.round(item.value)),
+        omega3epa: item.full_nutrients
+          ?.filter((item) => item.attr_id === 629)
+          .map((item) => Math.round(item.value)),
+        omega3dha: item.full_nutrients
+          ?.filter((item) => item.attr_id === 621)
+          .map((item) => Math.round(item.value)),
+        satfat: item.full_nutrients
+          ?.filter((item) => item.attr_id === 606)
+          .map((item) => Math.round(item.value)),
+        transfat: item.full_nutrients
+          ?.filter((item) => item.attr_id === 605)
+          .map((item) => Math.round(item.value)),
+        thiamine: item.full_nutrients
+          ?.filter((item) => item.attr_id === 404)
+          .map((item) => Math.round(item.value)),
+        riboflavin: item.full_nutrients
+          ?.filter((item) => item.attr_id === 405)
+          .map((item) => Math.round(item.value)),
+        niacin: item.full_nutrients
+          ?.filter((item) => item.attr_id === 406)
+          .map((item) => Math.round(item.value)),
+        panto: item.full_nutrients
+          ?.filter((item) => item.attr_id === 410)
+          .map((item) => Math.round(item.value)),
+        pyridox: item.full_nutrients
+          ?.filter((item) => item.attr_id === 415)
+          .map((item) => Math.round(item.value)),
+        combalamin: item.full_nutrients
+          ?.filter((item) => item.attr_id === 418)
+          .map((item) => Math.round(item.value)),
+        folate: item.full_nutrients
+          ?.filter((item) => item.attr_id === 417)
+          .map((item) => Math.round(item.value)),
+        vita: item.full_nutrients
+          ?.filter((item) => item.attr_id === 318)
+          .map((item) => Math.round(item.value)),
+        vitc: item.full_nutrients
+          ?.filter((item) => item.attr_id === 401)
+          .map((item) => Math.round(item.value)),
+        vitd: item.full_nutrients
+          ?.filter((item) => item.attr_id === 328)
+          .map((item) => Math.round(item.value)),
+        vite: item.full_nutrients
+          ?.filter((item) => item.attr_id === 323)
+          .map((item) => Math.round(item.value)),
+        vitk: item.full_nutrients
+          ?.filter((item) => item.attr_id === 430)
+          .map((item) => Math.round(item.value)),
+        calcium: item.full_nutrients
+          ?.filter((item) => item.attr_id === 301)
+          .map((item) => Math.round(item.value)),
+        copper: item.full_nutrients
+          ?.filter((item) => item.attr_id === 312)
+          .map((item) => Math.round(item.value)),
+        iron: item.full_nutrients
+          ?.filter((item) => item.attr_id === 303)
+          .map((item) => Math.round(item.value)),
+        magnesium: item.full_nutrients
+          ?.filter((item) => item.attr_id === 304)
+          .map((item) => Math.round(item.value)),
+        manganese: item.full_nutrients
+          ?.filter((item) => item.attr_id === 315)
+          .map((item) => Math.round(item.value)),
+        phosphorus: item.full_nutrients
+          ?.filter((item) => item.attr_id === 305)
+          .map((item) => Math.round(item.value)),
+        potassium: item.full_nutrients
+          ?.filter((item) => item.attr_id === 306)
+          .map((item) => Math.round(item.value)),
+        selenium: item.full_nutrients
+          ?.filter((item) => item.attr_id === 317)
+          .map((item) => Math.round(item.value)),
+        sodium: item.full_nutrients
+          ?.filter((item) => item.attr_id === 307)
+          .map((item) => Math.round(item.value)),
+        zinc: item.full_nutrients
+          ?.filter((item) => item.attr_id === 309)
+          .map((item) => Math.round(item.value)),
+        cholesterol: item.full_nutrients
+          ?.filter((item) => item.attr_id === 601)
+          .map((item) => Math.round(item.value)),
+        choline: item.full_nutrients
+          ?.filter((item) => item.attr_id === 421)
+          .map((item) => Math.round(item.value)),
+
         serving_quantity: item.serving_qty,
         serving_unit: item.serving_unit,
         serving_weight_grams: item.serving_weight_grams,
-        ...item,
       },
       ...selectedFood,
     ]);
