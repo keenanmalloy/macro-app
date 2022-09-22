@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineClose, AiOutlineFire } from "react-icons/ai";
 import { MdOutlineSettingsSuggest } from "react-icons/md";
 import { BsDot } from "react-icons/bs";
@@ -16,6 +16,7 @@ export const FoodSearchHeader = ({
   };
   const today = new Date();
   const hours = ((today.getHours() + 11) % 12) + 1;
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   return (
     <div>
@@ -40,13 +41,21 @@ export const FoodSearchHeader = ({
         reducedProtein={reducedProtein}
         reducedFats={reducedFats}
         reducedCarbs={reducedCarbs}
+        scrollPosition={scrollPosition}
+        setScrollPosition={setScrollPosition}
       />
 
       {isVisible ? (
         <div className="border-b border-solid border-slate-300 fixed top-20 w-full">
           <div className="flex justify-center -space-x-11">
-            <BsDot size={30} color={"lightgray"} />
-            <BsDot size={30} />
+            <BsDot
+              size={30}
+              color={scrollPosition > 200 ? "black" : "lightgray"}
+            />
+            <BsDot
+              size={30}
+              color={scrollPosition > 200 ? "lightgray" : "black"}
+            />
           </div>
         </div>
       ) : null}
@@ -59,12 +68,20 @@ const MacroProgressBars = ({
   reducedProtein,
   reducedCarbs,
   reducedFats,
+  scrollPosition,
+  setScrollPosition,
 }) => {
-  const [x, setX] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-
   const minSwipeDistance = 150;
+  const distance = touchStart - touchEnd;
+  const isLeftSwipe = distance > minSwipeDistance;
+  const isRightSwipe = distance < minSwipeDistance;
+
+  const handleScroll = (e) => {
+    console.log(e.target.scrollLeft);
+    setScrollPosition(e.target.scrollLeft);
+  };
 
   const onTouchStart = (e) => {
     setTouchEnd(null);
@@ -72,35 +89,18 @@ const MacroProgressBars = ({
   };
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < minSwipeDistance;
-    if (isRightSwipe || isLeftSwipe)
-      if (isRightSwipe) {
-        console.log("right", distance);
-      }
-    if (isLeftSwipe) {
-      console.log("left", distance);
+    console.log(scrollPosition, isLeftSwipe);
+
+    if (scrollPosition > 200 && isLeftSwipe) {
+      document.getElementById("macroProgressBars").scrollTo(500, 0);
+    } else if (scrollPosition < 300 && isRightSwipe) {
+      document.getElementById("macroProgressBars").scrollTo(0, 0);
     }
   };
 
-  console.log(x);
-
   const handleSwiping = (e) => {
-    // const desiredXStart = 445;
-    // const desiredXEnd = -110;
     const swipeX = e.touches[0].clientX;
     setTouchEnd(swipeX);
-    setX(swipeX);
-
-    // setX(
-    //   swipeX < desiredXEnd
-    //     ? desiredXEnd
-    //     : desiredXStart < swipeX
-    //     ? desiredXStart
-    //     : swipeX
-    // );
   };
 
   const totalCalories = 1987;
@@ -120,9 +120,11 @@ const MacroProgressBars = ({
   return (
     <section
       className="overflow-x-scroll scrollbar-hide"
+      id="macroProgressBars"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       onTouchMove={handleSwiping}
+      onScroll={handleScroll}
     >
       <MacroProgressBarsLeft
         reducedCalories={reducedCalories}

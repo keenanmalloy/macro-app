@@ -46,7 +46,7 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         histidine: item.full_nutrients
           ?.filter((item) => item.attr_id === 512)
           .map((item) => Math.round(item.value)),
-        isoleuciine: item.full_nutrients
+        isoleucine: item.full_nutrients
           ?.filter((item) => item.attr_id === 503)
           .map((item) => Math.round(item.value)),
         leucine: item.full_nutrients

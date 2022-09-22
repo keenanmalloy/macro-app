@@ -6,6 +6,7 @@ import { MdEditCalendar, MdPlaylistAdd } from "react-icons/md";
 import { RiFridgeLine } from "react-icons/ri";
 import { Barcode } from "./Barcode";
 import { Search } from "./Search";
+import axios from "axios";
 
 export const LogSlider = ({
   y,
@@ -71,6 +72,15 @@ export const LogSlider = ({
 
   const miniIconScroll = selectedFood.length > 4 ? "w-[600px]" : null;
 
+  const handleLogItems = async () => {
+    console.log("handle log items", selectedFood);
+    const response = await axios
+      .post("/api/foods", { foods: selectedFood })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
   return (
     <div
       className={`${scrollable} bg-white overflow-x-hidden h-full scrollbar-hide `}
@@ -108,7 +118,10 @@ export const LogSlider = ({
             <button className="rounded-full bg-slate-300 p-2">
               <MdEditCalendar />
             </button>
-            <button className="rounded-2xl bg-black text-white px-3 py-2">
+            <button
+              className="rounded-2xl bg-black text-white px-3 py-2"
+              onClick={handleLogItems}
+            >
               Log Items
             </button>
           </div>

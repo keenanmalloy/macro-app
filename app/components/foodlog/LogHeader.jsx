@@ -4,6 +4,7 @@ import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { AiOutlineFire } from "react-icons/ai";
 import { SliderDot } from "/app/components/dashboard/SliderDot";
+import { FoodSearchHeader } from "/app/components/foodlog/FoodSearchHeader";
 
 export const LogHeader = () => {
   const options = {
@@ -62,6 +63,15 @@ export const LogHeader = () => {
       <div className="border-b border-solid border-slate-300">
         <SliderDot />
       </div>
+      {/* <FoodSearchHeader
+        hidden={true}
+        isVisible={isVisible}
+        setIsModalVisible={setIsModalVisible}
+        reducedCalories={reducedCalories}
+        reducedProtein={reducedProtein}
+        reducedCarbs={reducedCarbs}
+        reducedFats={reducedFats}
+      /> */}
     </div>
   );
 };
