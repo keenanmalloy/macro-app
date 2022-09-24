@@ -79,7 +79,6 @@ const MacroProgressBars = ({
   const isRightSwipe = distance < minSwipeDistance;
 
   const handleScroll = (e) => {
-    console.log(e.target.scrollLeft);
     setScrollPosition(e.target.scrollLeft);
   };
 
@@ -89,8 +88,6 @@ const MacroProgressBars = ({
   };
 
   const onTouchEnd = () => {
-    console.log(scrollPosition, isLeftSwipe);
-
     if (scrollPosition > 200 && isLeftSwipe) {
       document.getElementById("macroProgressBars").scrollTo(500, 0);
     } else if (scrollPosition < 300 && isRightSwipe) {

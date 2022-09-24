@@ -73,9 +73,8 @@ export const LogSlider = ({
   const miniIconScroll = selectedFood.length > 4 ? "w-[600px]" : null;
 
   const handleLogItems = async () => {
-    console.log("handle log items", selectedFood);
     const response = await axios
-      .post("/api/foods", { foods: selectedFood })
+      .post("/api/getfoods", { foods: selectedFood })
       .then((res) => {
         console.log(res.data);
       });

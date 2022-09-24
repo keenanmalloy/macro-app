@@ -7,6 +7,7 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         id: uuidv4(),
         image: item.photo.thumb,
         name: item.food_name,
+        timestamp: new Date().toISOString(),
         alcohol: item.full_nutrients
           ?.filter((item) => item.attr_id === 221)
           .map((item) => Math.round(item.value)),
@@ -37,7 +38,7 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         sugar: item.full_nutrients
           ?.filter((item) => item.attr_id === 269)
           .map((item) => Math.round(item.value)),
-        added_sugar: item.full_nutrients
+        addedsugar: item.full_nutrients
           ?.filter((item) => item.attr_id === 539)
           .map((item) => Math.round(item.value)),
         cystine: item.full_nutrients
@@ -106,7 +107,7 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
         panto: item.full_nutrients
           ?.filter((item) => item.attr_id === 410)
           .map((item) => Math.round(item.value)),
-        pyridox: item.full_nutrients
+        pyriodox: item.full_nutrients
           ?.filter((item) => item.attr_id === 415)
           .map((item) => Math.round(item.value)),
         combalamin: item.full_nutrients
@@ -167,15 +168,15 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
           ?.filter((item) => item.attr_id === 421)
           .map((item) => Math.round(item.value)),
 
-        serving_quantity: item.serving_qty,
-        serving_unit: item.serving_unit,
-        serving_weight_grams: item.serving_weight_grams,
+        servingqty: item.serving_qty,
+        servingunit: item.serving_unit,
+        servingweightgrams: item.serving_weight_grams,
       },
       ...selectedFood,
     ]);
   };
 
-  const calories = item.full_nutrients
+  const calorietotal = item.full_nutrients
     ?.filter((item) => item.attr_id === 208)
     .map((item, i) => (
       <p key={i} className="px-1">
@@ -226,7 +227,7 @@ export const FoodRow = ({ item, i, selectedFood, setSelectedFood }) => {
             )}
           </h3>
           <div className="flex text-xs ">
-            {calories}
+            {calorietotal}
             {protein}
             {fats}
             {carbs}

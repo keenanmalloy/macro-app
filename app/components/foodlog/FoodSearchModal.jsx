@@ -15,7 +15,6 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
   const [height, setHeight] = useState();
   const [selected, setSelected] = useState("Search");
   const [selectedFood, setSelectedFood] = useState([]);
-
   const handleRemove = (id) => {
     const newSelectedFood = selectedFood.filter((food) => food.id !== id);
     setSelectedFood(newSelectedFood);
@@ -69,7 +68,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
                     <p className="pr-2">{food.protein}P</p>
                     <p className="pr-2">{food.fats}F</p>
                     <p className="pr-2">{food.carbs}C</p>
-                    <p>{Math.round(food.serving_weight_grams)}g</p>
+                    <p>{Math.round(food.servingweightgrams)}g</p>
                   </div>
                   <div className="space-x-5 py-5 text-sm flex items-center">
                     <button className="flex ">
@@ -93,9 +92,9 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
                   <input
                     type="number"
                     value={
-                      !food.serving_weight_grams
-                        ? food.serving_quantity
-                        : food.serving_weight_grams
+                      !food.servingweightgrams
+                        ? food.servingqty
+                        : food.servingweightgrams
                     }
                     onChange={(e) =>
                       setSelectedFood(
@@ -103,7 +102,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
                           item.id === food.id
                             ? {
                                 ...item,
-                                serving_weight_grams: e.target.value,
+                                servingweightgrams: e.target.value,
                               }
                             : item
                         )
@@ -112,7 +111,7 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
                     className="bg-gray-200 text-center flex text-black h-10 w-16 pb-2 sm"
                   />
                   <p className="absolute bottom-6 text-gray-600 pb-1 text-xs">
-                    {!food.serving_weight_grams ? food.serving_unit : "g"}
+                    {!food.servingweightgrams ? food.servingunit : "g"}
                   </p>
                 </div>
               </div>
@@ -282,7 +281,7 @@ const CarbBreakdown = ({ reducedCarbs, selectedFood }) => {
   }, 0);
 
   const reducedAddedSugar = selectedFood.reduce((acc, food) => {
-    return acc + food.added_sugar[0];
+    return acc + food.addedsugar[0];
   }, 0);
 
   return (
