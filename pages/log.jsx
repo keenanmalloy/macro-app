@@ -10,6 +10,7 @@ import { LogContent } from "../app/components/foodlog/LogContent";
 export default function LogPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [nutritionData, setNutritionData] = useState(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     async function getNutrition() {
@@ -32,12 +33,17 @@ export default function LogPage() {
         <FoodSearchModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
+          nutritionData={nutritionData}
+          scrollPosition={scrollPosition}
+          setScrollPosition={setScrollPosition}
         />
       ) : (
         <>
           <LogHeader
             nutritionData={nutritionData}
             setIsModalVisible={setIsModalVisible}
+            scrollPosition={scrollPosition}
+            setScrollPosition={setScrollPosition}
           />
           <LogContent nutritionData={nutritionData} />
           {/* <LogTime /> */}

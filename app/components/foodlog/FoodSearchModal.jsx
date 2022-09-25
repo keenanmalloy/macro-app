@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineClose,
   AiOutlineFire,
@@ -8,8 +8,28 @@ import { GiKnifeFork } from "react-icons/gi";
 import { LogSlider } from "./LogSlider";
 import { FoodSearchHeader } from "./FoodSearchHeader";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
+import axios from "axios";
 
-export const FoodSearchModal = ({ setIsModalVisible }) => {
+export const FoodSearchModal = ({
+  setIsModalVisible,
+  nutritionData,
+  scrollPosition,
+  setScrollPosition,
+}) => {
+  useEffect(() => {
+    async function getNutrition() {
+      const response = await axios
+        .get("/api/getfoods")
+        .then((res) => {
+          setNutritionData(res.data);
+          // console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    getNutrition();
+  }, []);
   const [isVisible, setIsVisible] = useState(false);
   const [y, setY] = useState(4);
   const [height, setHeight] = useState();
@@ -45,6 +65,9 @@ export const FoodSearchModal = ({ setIsModalVisible }) => {
         reducedProtein={reducedProtein}
         reducedFats={reducedFats}
         reducedCarbs={reducedCarbs}
+        nutritionData={nutritionData}
+        scrollPosition={scrollPosition}
+        setScrollPosition={setScrollPosition}
       />
       <div className="fixed top-32 overflow-auto h-screen scrollbar-hide">
         {selectedFood.length < 1 ? (

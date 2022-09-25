@@ -7,7 +7,12 @@ import { SliderDot } from "/app/components/dashboard/SliderDot";
 import { FoodSearchHeader } from "/app/components/foodlog/FoodSearchHeader";
 import { BsDot } from "react-icons/bs";
 
-export const LogHeader = ({ nutritionData, setIsModalVisible }) => {
+export const LogHeader = ({
+  nutritionData,
+  setIsModalVisible,
+  scrollPosition,
+  setScrollPosition,
+}) => {
   const options = {
     weekday: "long",
     month: "short",
@@ -15,7 +20,30 @@ export const LogHeader = ({ nutritionData, setIsModalVisible }) => {
     weekday: "short",
   };
   const today = new Date();
-  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const reducedProtein = !nutritionData
+    ? null
+    : nutritionData.reduce((acc, pro) => {
+        return acc + pro.protein;
+      }, 0);
+
+  const reducedCarbs = !nutritionData
+    ? null
+    : nutritionData.reduce((acc, carbs) => {
+        return acc + carbs.carbs;
+      }, 0);
+
+  const reducedFats = !nutritionData
+    ? null
+    : nutritionData.reduce((acc, fats) => {
+        return acc + fats.fats;
+      }, 0);
+
+  const reducedCalories = !nutritionData
+    ? null
+    : nutritionData.reduce((acc, calories) => {
+        return acc + calories.calories;
+      }, 0);
 
   const yesterday = new Date(today);
   yesterday.setDate(yesterday.getDate() - 1);
@@ -46,7 +74,15 @@ export const LogHeader = ({ nutritionData, setIsModalVisible }) => {
         </div>
       </div>
       <div>
-        <FoodSearchHeader setIsModalVisible={setIsModalVisible} />
+        <FoodSearchHeader
+          reducedCalories={reducedCalories}
+          reducedProtein={reducedProtein}
+          reducedFats={reducedFats}
+          reducedCarbs={reducedCarbs}
+          setIsModalVisible={setIsModalVisible}
+          scrollPosition={scrollPosition}
+          setScrollPosition={setScrollPosition}
+        />
 
         <div className="border-b border-solid border-slate-300 w-full">
           <div className="flex justify-center -space-x-11">

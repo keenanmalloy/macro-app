@@ -10,13 +10,15 @@ export const FoodSearchHeader = ({
   reducedProtein,
   reducedCarbs,
   reducedFats,
+  nutritionData,
+  scrollPosition,
+  setScrollPosition,
 }) => {
   const options = {
     weekday: "long",
   };
   const today = new Date();
   const hours = ((today.getHours() + 11) % 12) + 1;
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   return (
     <div>
@@ -43,6 +45,7 @@ export const FoodSearchHeader = ({
         reducedCarbs={reducedCarbs}
         scrollPosition={scrollPosition}
         setScrollPosition={setScrollPosition}
+        nutritionData={nutritionData}
       />
 
       {isVisible ? (
@@ -70,6 +73,7 @@ const MacroProgressBars = ({
   reducedFats,
   scrollPosition,
   setScrollPosition,
+  nutritionData,
 }) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -137,6 +141,7 @@ const MacroProgressBars = ({
         carbsPercentage={carbsPercentage}
         fatsPercentage={fatsPercentage}
         completedDailyMacro={completedDailyMacro}
+        nutritionData={nutritionData}
       />
       <MacroProgressBarsTotals
         reducedCalories={reducedCalories}
@@ -168,7 +173,9 @@ const MacroProgressBarsLeft = ({
   carbsPercentage,
   fatsPercentage,
   completedDailyMacro,
+  nutritionData,
 }) => {
+
   return (
     <div className="flex justify-evenly  relative left-[500px] top-5 w-full">
       <div className="w-full px-2">
