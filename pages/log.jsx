@@ -11,15 +11,13 @@ export default function LogPage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [nutritionData, setNutritionData] = useState(null);
 
-
-
   useEffect(() => {
     async function getNutrition() {
       const response = await axios
         .get("/api/getfoods")
         .then((res) => {
           setNutritionData(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         })
         .catch((err) => {
           console.log(err);
@@ -37,8 +35,11 @@ export default function LogPage() {
         />
       ) : (
         <>
-          <LogHeader nutritionData={nutritionData}/>
-          <LogContent nutritionData={nutritionData}/>
+          <LogHeader
+            nutritionData={nutritionData}
+            setIsModalVisible={setIsModalVisible}
+          />
+          <LogContent nutritionData={nutritionData} />
           {/* <LogTime /> */}
           <SearchBar
             isModalVisible={isModalVisible}

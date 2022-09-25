@@ -21,7 +21,7 @@ export default async (req, res) => {
     from 
        nutrition 
     where 
-      timestamp::date = '09/24/22'::date;
+      timestamp::date = '09/25/22'::date;
         `;
         const result = await db.query(text);
 
